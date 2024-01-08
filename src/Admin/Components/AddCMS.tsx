@@ -69,17 +69,29 @@ const AddCMS = ({ appData }: any) => {
       <h2>{appData.title}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {appData.data.map(
-          (formData: any) =>
-            formData.input === "text" && (
-              <TextField
-                key={formData.id}
-                errors={errors}
-                register={register}
-                formData={formData}
-              />
+          (formData: any) =>{
+            switch(formData.input){
+              case 'text':
+                return  (
+                  <TextField
+                    key={formData.id}
+                    errors={errors}
+                    register={register}
+                    formData={formData}
+                  />);
+                  case 'image':
+                    return ( <FileUpload
+                      key={formData.id}
+                      errors={errors}
+                      register={register}
+                      formData={formData}
+                    />)
+              }
+              
+            }
             )
-        )}
-        {appData.data.map(
+        }
+        {/* {appData.data.map(
           (formData: any) =>
             formData.input === "image" && (
               <>
@@ -93,7 +105,7 @@ const AddCMS = ({ appData }: any) => {
                <br></br>
                </>
             )
-        )}
+        )} */}
         <button type="submit" className="btn btn-primary mt-4 mb-6">
           {paramId ? "Update" : "Add New"}
         </button>

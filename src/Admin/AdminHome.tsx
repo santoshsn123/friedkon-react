@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes, useLocation } from "react-router-dom";
 // import Login from "./Components/Login";
 import { CMS } from "./Components/CMS";
 import Users from "./Components/Users";
@@ -8,7 +8,10 @@ import AddCMS from "./Components/AddCMS";
 
 const AdminHome = () => {
     console.log('appData here : ',appData);
+    const location = useLocation();
+    console.log('location',location);
     useEffect(()=>{
+     
       if(!localStorage.getItem('loggedInUser')){
         window.location.href = '/login';
       }
@@ -51,11 +54,22 @@ const AdminHome = () => {
           <div className="col-md-3">
             <ul className="list-group admin-menu">
             
-            <li className="list-group-item"><NavLink to='/admin/' >Dashboard</NavLink></li>
+            <li 
+            
+            ><NavLink to='/admin/dashboard'   className={({ isActive, isPending, isTransitioning }) =>
+            [
+              isPending ? "pending" : "",
+              isActive ? "active" : "",
+              isTransitioning ? "transitioning" : "","list-group-item"
+            ].join(" ")}
+            >Dashboard</NavLink></li>
             {appData.map(item => {
               return (
-                <li className="list-group-item" key={item.id}>
-                  <NavLink to={`/admin${item.router}`}>{item.title}</NavLink>
+                <li  key={item.id}>
+                  <NavLink className={({ isActive }) =>
+            [
+              isActive ? "active" : "","list-group-item"
+            ].join(" ")} to={`/admin${item.router}`}>{item.title}</NavLink>
                 </li>
               )
             })}
@@ -64,7 +78,7 @@ const AdminHome = () => {
           </div>
           <div className="col-md-9 border">
             <Routes>
-            <Route path='/' element={<Users />} />
+            <Route path='/dashboard' element={<Users />} />
             <Route path='/users' element={<Users />} />
             {appData.map((item,index) => {
               return (

@@ -25,8 +25,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+   
   </head>
-  <body>
+  <body class="home page-template page page-id-9 wp-custom-logo wp-embed-responsive theme-cozystay woocommerce-js elementor-default elementor-kit-5 elementor-page elementor-page-9 page-template-template-wide-content page-template-template-wide-content-php cs-template-wide light-color site-layout-fullwidth cs-form-square e--ua-blink e--ua-chrome e--ua-webkit" >
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -39,5 +40,122 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>(function () {
+			function maybePrefixUrlField() {
+				const value = this.value.trim()
+				if (value !== '' && value.indexOf('http') !== 0) {
+					this.value = 'http://' + value
+				}
+			}
+
+			const urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]')
+			for (let j = 0; j < urlFields.length; j++) {
+				urlFields[j].addEventListener('blur', maybePrefixUrlField)
+			}
+		})();
+	</script>
+	
+	<!-- <link rel="stylesheet" id="e-animations-css" href="./assets/css/animations.min.css" type="text/css" media="all"> -->
+	<!-- <link rel="stylesheet" id="elementor-icons-fa-regular-css" href="./assets/css/regular.min.css" type="text/css"
+		media="all"> -->
+	
+	<!-- <script type="text/javascript" src="./assets/js/helper.min.js" id="cozystay-helper-js"></script>
+	<script type="text/javascript" src="./assets/js/slick.min.js" id="slick-js"></script> -->
+	<!-- <script type="text/javascript" src="./assets/js/animations.min.js" id="cozystay-animations-js"></script> -->
+
+	<!-- <script type="text/javascript" src="./assets/js/video-player.min.js" id="loftocean-video-player-js"></script>
+	<script type="text/javascript" src="./assets/js/sticky-site-header.min.js"
+		id="cozystay-sticky-site-header-js"></script> -->
+	<!-- <script type="text/javascript" src="./assets/js/jquery.justifiedGallery.min.js" id="justified-gallery-js"></script>
+	<script type="text/javascript" src="./assets/js/jquery.fitvids.min.js" id="jquery-fitvids-js"></script> -->
+	<!-- <script type="text/javascript" id="cozystay-theme-script-js-extra">
+		/* <![CDATA[ */
+		var cozystay = { "errorText": { "noMediaFound": "No image found" }, "woocommerceProductFilterAjaxEnabled": "", "onepagemenus": "" };
+         /* ]]> */
+	</script> -->
+	<!-- <script type="text/javascript" src="./assets/js/main.min.js" id="cozystay-theme-script-js"></script>
+	<script type="text/javascript" id="cozystay-ajax-navigation-js-extra">
+		/* <![CDATA[ */
+		var cozystayAjaxNavigation = { "noMoreText": "No More Posts", "url": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/wp-admin\/admin-ajax.php", "data": { "query": { "paged": 2, "ignore_sticky_posts": true, "post_status": "publish" }, "action": "cozystay_load_more", "settings": { "archive_page": "", "page_layout": "", "layout": "list", "columns": false, "post_meta": "a:4:{i:0;s:7:\"excerpt\";i:1;s:13:\"read_more_btn\";i:2;s:6:\"author\";i:3;s:4:\"date\";}" } } };
+         /* ]]> */
+	</script> -->
+	<!-- <script type="text/javascript" src="./assets/js/ajax-navigation.min.js" id="cozystay-ajax-navigation-js"></script>
+	<script type="text/javascript" src="./assets/js/index.js" id="swv-js"></script>
+	<script type="text/javascript" id="contact-form-7-js-extra">
+		/* <![CDATA[ */
+		var wpcf7 = { "api": { "root": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/wp-json\/", "namespace": "contact-form-7\/v1" } };
+         /* ]]> */
+	</script> -->
+	<!-- <script type="text/javascript" src="./assets/js/index(1).js" id="contact-form-7-js"></script>
+	<script type="text/javascript" src="./assets/js/jquery.blockUI.min.js" id="jquery-blockui-js"></script>
+	<script type="text/javascript" id="wc-add-to-cart-js-extra">
+		/* <![CDATA[ */
+		var wc_add_to_cart_params = { "ajax_url": "\/countryside-lodge\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/countryside-lodge\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "View cart", "cart_url": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/cart\/", "is_cart": "", "cart_redirect_after_add": "no" };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/add-to-cart.min.js" id="wc-add-to-cart-js"></script>
+	<script type="text/javascript" src="./assets/js/js.cookie.min.js" id="js-cookie-js"></script>
+	<script type="text/javascript" id="woocommerce-js-extra">
+		/* <![CDATA[ */
+		var woocommerce_params = { "ajax_url": "\/countryside-lodge\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/countryside-lodge\/?wc-ajax=%%endpoint%%" };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/woocommerce.min.js" id="woocommerce-js"></script>
+	<script type="text/javascript" src="./assets/js/moment.min.js" id="moment-js"></script>
+	<script type="text/javascript" id="moment-js-after">
+		/* <![CDATA[ */
+		moment.updateLocale('en_US', { "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "week": { "dow": 1 }, "longDateFormat": { "LT": "g:i a", "LTS": null, "L": null, "LL": "F j, Y", "LLL": "F j, Y g:i a", "LLLL": null } });
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/daterangepicker.min.js" id="jquery-daterangepicker-js"></script>
+	<script type="text/javascript" id="loftocean-front-media-js-extra">
+		/* <![CDATA[ */
+		var loftoceanImageLoad = { "lazyLoadEnabled": "", "reservation": { "room": { "single": "Room", "plural": "Rooms" }, "adult": { "single": "Adult", "plural": "Adults" }, "child": { "single": "Child", "plural": "Children" } } };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/front-media.min.js" id="loftocean-front-media-js"></script>
+	<script type="text/javascript" src="./assets/js/underscore.min.js" id="underscore-js"></script>
+	<script type="text/javascript" src="./assets/js/backbone.min.js" id="backbone-js"></script>
+	<script type="text/javascript" id="wp-api-request-js-extra">
+		/* <![CDATA[ */
+		var wpApiSettings = { "root": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/wp-json\/", "nonce": "110a546b02", "versionString": "wp\/v2\/" };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/api-request.min.js" id="wp-api-request-js"></script>
+	<script type="text/javascript" src="./assets/js/wp-api.min.js" id="wp-api-js"></script>
+	<script type="text/javascript" id="loftocean-post-metas-js-extra">
+		/* <![CDATA[ */
+		var loftoceanSocialAjax = { "url": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/wp-admin\/admin-ajax.php", "like": { "action": "loftocean_post_like" }, "social": { "action": "loftocean_social_counter" }, "loadPostMetasDynamically": "", "currentPostID": "" };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/post-metas.min.js" id="loftocean-post-metas-js"></script>
+	<script type="text/javascript" src="./assets/js/facebook-jssdk.min.js" id="loftocean-facebook-js"></script>
+	<script type="text/javascript" defer="" src="./assets/js/forms.js" id="mc4wp-forms-api-js"></script>
+	<script type="text/javascript" src="./assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
+	<script type="text/javascript" src="./assets/js/frontend-modules.min.js"
+		id="elementor-frontend-modules-js"></script>
+	<script type="text/javascript" src="./assets/js/waypoints.min.js" id="elementor-waypoints-js"></script>
+	<script type="text/javascript" src="./assets/js/core.min.js" id="jquery-ui-core-js"></script>
+	<script type="text/javascript" src="./assets/js/swiper.min.js" id="swiper-js"></script>
+	<script type="text/javascript" src="./assets/js/share-link.min.js" id="share-link-js"></script>
+	<script type="text/javascript" src="./assets/js/dialog.min.js" id="elementor-dialog-js"></script>
+	<script type="text/javascript" id="elementor-frontend-js-before">
+		/* <![CDATA[ */
+		var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Share on Facebook", "shareOnTwitter": "Share on Twitter", "pinIt": "Pin it", "download": "Download", "downloadImage": "Download image", "fullscreen": "Fullscreen", "zoom": "Zoom", "share": "Share", "playVideo": "Play Video", "previous": "Previous", "next": "Next", "close": "Close", "a11yCarouselWrapperAriaLabel": "Carousel | Horizontal scrolling: Arrow Left & Right", "a11yCarouselPrevSlideMessage": "Previous slide", "a11yCarouselNextSlideMessage": "Next slide", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 767, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Widescreen", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } } }, "version": "3.16.5", "is_static": false, "experimentalFeatures": [], "urls": { "assets": "https:\/\/cozystay.loftocean.com\/countryside-lodge\/wp-content\/plugins\/elementor\/assets\/" }, "swiperClass": "swiper-container", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 9, "title": "CozyStay%20Countryside%20Lodge%20%E2%80%93%20CozyStay%20Countryside%20Lodge%20Demo", "excerpt": "", "featuredImage": false } };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/frontend.min.js" id="elementor-frontend-js"></script><span
+		id="elementor-device-mode" class="elementor-screen-only"></span>
+	<script type="text/javascript" src="./assets/js/preloaded-modules.min.js" id="preloaded-modules-js"></script>
+	<svg style="display: none;" class="e-font-icon-svg-symbols"></svg>
+	<script type="text/javascript" src="./assets/js/parallax-bundle.min.js" id="loftocean-parallax-bundle-js"></script>
+	<script type="text/javascript" id="loftocean-elementor-frontend-js-extra">
+		/* <![CDATA[ */
+		var loftoceanElementorFront = { "countDown": { "days": "Days", "hours": "Hours", "min": "Minutes", "sec": "Seconds" }, "reservation": { "room": { "single": "Room", "plural": "Rooms" }, "adult": { "single": "Adult", "plural": "Adults" }, "child": { "single": "Child", "plural": "Children" } } };
+         /* ]]> */
+	</script>
+	<script type="text/javascript" src="./assets/js/elementor.min.js" id="loftocean-elementor-frontend-js"></script>
+	 -->
   </body>
 </html>

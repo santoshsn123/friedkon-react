@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import FileUpload from "./formFields/FileUpload";
+import TextArea from "./formFields/TextArea";
+import DropDown from "./formFields/DropDown";
+import Radio from "./formFields/Radio";
 
 const AddCMS = ({ appData }: any) => {
   console.log("see  this ", appData);
@@ -14,7 +17,7 @@ const AddCMS = ({ appData }: any) => {
     handleSubmit,
     formState: { errors },
     setValue,
-    getValues
+    getValues,
   } = useForm();
 
   const { id: paramId } = useParams();
@@ -25,13 +28,13 @@ const AddCMS = ({ appData }: any) => {
         Object.keys(res.data).forEach((key) => {
           if (key !== "_id" && key !== "__v") {
             setValue(key, res.data[key]);
-            console.log('see data here :- ', key, res.data[key]);
-            appData.data.map((item:any)=>{
-              if(item.name==='image'){
-                item.imageUrl=res.data[key];
+            console.log("see data here :- ", key, res.data[key]);
+            appData.data.map((item: any) => {
+              if (item.name === "image") {
+                item.imageUrl = res.data[key];
               }
               return item;
-            })
+            });
           }
         });
       });
@@ -68,29 +71,55 @@ const AddCMS = ({ appData }: any) => {
     <>
       <h2>{appData.title}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {appData.data.map(
-          (formData: any) =>{
-            switch(formData.input){
-              case 'text':
-                return  (
-                  <TextField
-                    key={formData.id}
-                    errors={errors}
-                    register={register}
-                    formData={formData}
-                  />);
-                  case 'image':
-                    return ( <FileUpload
-                      key={formData.id}
-                      errors={errors}
-                      register={register}
-                      formData={formData}
-                    />)
-              }
-              
-            }
-            )
-        }
+        {appData.data.map((formData: any) => {
+          switch (formData.input) {
+            case "text":
+              return (
+                <TextField
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                />
+              );
+            case "image":
+              return (
+                <FileUpload
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                />
+              );
+            case "textarea":
+              return (
+                <TextArea
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                />
+              );
+            case "dropdown":
+              return (
+                <DropDown
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                />
+              );
+            case "radio":
+              return (
+                <Radio
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                />
+              );
+          }
+        })}
         {/* {appData.data.map(
           (formData: any) =>
             formData.input === "image" && (

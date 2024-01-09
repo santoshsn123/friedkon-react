@@ -50,9 +50,9 @@ export default [
     router: "/plan-management",
     dbTableName: "Plan",
     isEditable: true,
-    apiURL:'plan',
-    multiRecords:true,
-    data:[
+    apiURL: "plan",
+    multiRecords: true,
+    data: [
       {
         id: 1,
         name: "planTitle",
@@ -61,8 +61,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        isActive:true,
-        dataType:"String"
+        isActive: true,
+        dataType: "String",
       },
       {
         id: 2,
@@ -71,9 +71,14 @@ export default [
         order: 2,
         editable: true,
         displayOnTable: true,
-        input: "text",
-        isActive:true,
-        dataType:"String"
+        input: "dropdown",
+        isActive: true,
+        dataType: "String",
+        options: [
+          { value: "", label: "Select" },
+          { value: "option1", label: "Option 1" },
+          { value: "option2", label: "Option 2" },
+        ],
       },
       {
         id: 3,
@@ -83,8 +88,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "image",
-        isActive:true,
-        dataType:"String"
+        isActive: true,
+        dataType: "String",
       },
       {
         id: 4,
@@ -93,9 +98,9 @@ export default [
         order: 4,
         editable: true,
         displayOnTable: true,
-        input: "text",
-        isActive:true,
-        dataType:"String"
+        input: "textarea",
+        isActive: true,
+        dataType: "String",
       },
       {
         id: 5,
@@ -105,10 +110,22 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        isActive:true,
-        dataType:"String"
+        isActive: true,
+        dataType: "String",
       },
-    ]
+      {
+        id: 6,
+        name: "availableInRural",
+        displayName: "Available in Rural Area",
+        order: 6,
+        editable: true,
+        displayOnTable: true,
+        input: "radio",
+        isActive: true,
+        dataType: "String",
+        options:['Yes','No']
+      },
+    ],
   },
   {
     id: 2,
@@ -116,8 +133,8 @@ export default [
     router: "/book-management",
     dbTableName: "book",
     isEditable: true,
-    apiURL:'book',
-    multiRecords:true,
+    apiURL: "book",
+    multiRecords: true,
     data: [
       {
         id: 1,
@@ -127,7 +144,7 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        dataType:"String"
+        dataType: "String",
       },
       {
         id: 2,
@@ -137,7 +154,7 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        dataType:"String"
+        dataType: "String",
       },
     ],
   },
@@ -147,8 +164,8 @@ export default [
     router: "/main-banner-text-management",
     dbTableName: "BannerText",
     isEditable: true,
-    apiURL:'banner',
-    multiRecords:false,
+    apiURL: "banner",
+    multiRecords: false,
     data: [
       {
         id: 1,
@@ -158,8 +175,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        dataType:"String",
-        required: true
+        dataType: "String",
+        required: true,
       },
       {
         id: 2,
@@ -169,8 +186,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        dataType:"String",
-        required: true
+        dataType: "String",
+        required: true,
       },
       {
         id: 3,
@@ -180,8 +197,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "text",
-        dataType:"String",
-        required: true
+        dataType: "String",
+        required: true,
       },
       {
         id: 4,
@@ -191,8 +208,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "image",
-        dataType:"String",
-        required: false
+        dataType: "String",
+        required: false,
       },
       {
         id: 5,
@@ -202,8 +219,8 @@ export default [
         editable: true,
         displayOnTable: true,
         input: "image",
-        dataType:"String",
-        required: false
+        dataType: "String",
+        required: false,
       },
     ],
   },

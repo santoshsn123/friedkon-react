@@ -48,7 +48,7 @@ const Login = () => {
         <h3>Login Here</h3>
         {successMessage && <p className="success">{successMessage}</p>}
         {errorMessage && <span className="error-msg">{errorMessage}</span>}
-        <label>Email</label>
+        <label className="login-label">Email</label>
         <input
           {...register("email", {
             required: true,
@@ -70,7 +70,7 @@ const Login = () => {
           </div>
         )}
 
-        <label>Password</label>
+        <label className="login-label">Password</label>
         <input
           {...register("password", {
             required: true,

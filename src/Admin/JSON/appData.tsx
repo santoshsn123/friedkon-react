@@ -98,7 +98,7 @@ export default [
         order: 4,
         editable: true,
         displayOnTable: true,
-        input: "textarea",
+        input: "ckeditor",
         isActive: true,
         dataType: "String",
       },

@@ -7,6 +7,7 @@ import FileUpload from "./formFields/FileUpload";
 import TextArea from "./formFields/TextArea";
 import DropDown from "./formFields/DropDown";
 import Radio from "./formFields/Radio";
+import CKEditorComponent from "./formFields/CKEditor";
 
 const AddCMS = ({ appData }: any) => {
   console.log("see  this ", appData);
@@ -18,6 +19,7 @@ const AddCMS = ({ appData }: any) => {
     formState: { errors },
     setValue,
     getValues,
+    watch
   } = useForm();
 
   const { id: paramId } = useParams();
@@ -118,6 +120,13 @@ const AddCMS = ({ appData }: any) => {
                   formData={formData}
                 />
               );
+            case "ckeditor":
+              return (<CKEditorComponent  key={formData.id}
+                errors={errors}
+                register={register}
+                formData={formData}
+                watch={watch}
+                setValue={setValue} />)
           }
         })}
         {/* {appData.data.map(

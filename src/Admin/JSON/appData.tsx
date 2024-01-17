@@ -166,17 +166,17 @@ export default [
         dataType: "String",
         required: false,
       },
-      {
-        id: 5,
-        name: "bannerimage",
-        displayName: "Banner Logo",
-        order: 5,
-        editable: true,
-        displayOnTable: true,
-        input: "image",
-        dataType: "String",
-        required: false,
-      },
+      // {
+      //   id: 5,
+      //   name: "bannerimage",
+      //   displayName: "Banner Logo",
+      //   order: 5,
+      //   editable: true,
+      //   displayOnTable: true,
+      //   input: "image",
+      //   dataType: "String",
+      //   required: false,
+      // },
     ],
   },
   {
@@ -220,7 +220,7 @@ export default [
         input: "ckeditor",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
   },
   {
@@ -275,9 +275,10 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  },{
+  },
+  {
     id: 6,
     title: "Past Work",
     router: "/past-work-management",
@@ -307,10 +308,11 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  },{
-    id: 6,
+  },
+  {
+    id: 7,
     title: "Feature Heading",
     router: "/feature-heading-management",
     dbTableName: "FeatureHeading",
@@ -350,10 +352,11 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  },{
-    id: 7,
+  },
+  {
+    id: 8,
     title: "Features Management",
     router: "/feature-management",
     dbTableName: "Features",
@@ -393,11 +396,11 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  }
-  ,{
-    id: 8,
+  },
+  {
+    id: 9,
     title: "Testimonial Heading",
     router: "/testimonial-heading-management",
     dbTableName: "TestimonialHeading",
@@ -426,10 +429,11 @@ export default [
         input: "text",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  },{
-    id: 9,
+  },
+  {
+    id: 10,
     title: "Testimonial",
     router: "/testimonial-management",
     dbTableName: "Testimonial",
@@ -458,8 +462,8 @@ export default [
         input: "text",
         isActive: true,
         dataType: "String",
-      }
-      ,{
+      },
+      {
         id: 3,
         name: "feedback",
         displayName: "Clients Feedback",
@@ -469,8 +473,8 @@ export default [
         input: "ckeditor",
         isActive: true,
         dataType: "String",
-      }
-      ,{
+      },
+      {
         id: 4,
         name: "picture",
         displayName: "Clients Picture",
@@ -480,10 +484,11 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  },{
-    id: 10,
+  },
+  {
+    id: 11,
     title: "Welcome Text Management",
     router: "/welcome-text-management",
     dbTableName: "WelcomeText",
@@ -512,8 +517,8 @@ export default [
         input: "text",
         isActive: true,
         dataType: "String",
-      }
-      ,{
+      },
+      {
         id: 3,
         name: "description",
         displayName: "Description",
@@ -523,8 +528,73 @@ export default [
         input: "ckeditor",
         isActive: true,
         dataType: "String",
-      }
+      },
     ],
-  }
- 
+  },
+  {
+    id: 12,
+    title: "Reach Out Management",
+    router: "/reach-out-management",
+    dbTableName: "ReachOut",
+    isEditable: true,
+    apiURL: "reachout",
+    multiRecords: true,
+    data: [
+      {
+        id: 1,
+        name: "email",
+        displayName: "Email",
+        order: 1,
+        editable: true,
+        displayOnTable: true,
+        input: "text",
+        isActive: true,
+        dataType: "String",
+      },
+      {
+        id: 2,
+        name: "telephone",
+        displayName: "Telephone",
+        order: 2,
+        editable: true,
+        displayOnTable: true,
+        input: "text",
+        isActive: true,
+        dataType: "String",
+      },
+      {
+        id: 3,
+        name: "telephone2",
+        displayName: "Telephone 2",
+        order: 3,
+        editable: true,
+        displayOnTable: true,
+        input: "text",
+        isActive: true,
+        dataType: "String",
+      },
+      {
+        id: 4,
+        name: "address",
+        displayName: "Address",
+        order: 4,
+        editable: true,
+        displayOnTable: true,
+        input: "textarea",
+        isActive: true,
+        dataType: "String",
+      },
+      {
+        id: 5,
+        name: "locationlink",
+        displayName: "Location Link",
+        order: 5,
+        editable: true,
+        displayOnTable: true,
+        input: "text",
+        isActive: true,
+        dataType: "String",
+      },
+    ],
+  },
 ];

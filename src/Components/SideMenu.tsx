@@ -1,6 +1,9 @@
 import React from "react";
+import EditButton from "./EditButton";
 
-const SideMenu = ({showSideMenu,setSidemenustate}:any) => {
+const SideMenu = ({showSideMenu,setSidemenustate, admin,  websiteData: {
+  reachOut = {},
+}}:any) => {
   return (
     <>
       <div className={`sidemenu sidemenu-custom slide-from-left custom-width ${showSideMenu}`}>
@@ -99,6 +102,7 @@ const SideMenu = ({showSideMenu,setSidemenustate}:any) => {
                                 <div className="elementor-widget-container">
                                   <div className="cs-title-wrap">
                                     <h6 className="cs-title">Contact Info</h6>
+                                    <EditButton admin={admin} url={`admin/reach-out-management/edit/${reachOut._id}`} />
                                   </div>
                                 </div>
                               </div>
@@ -119,8 +123,9 @@ const SideMenu = ({showSideMenu,setSidemenustate}:any) => {
                                           ></i>
                                         </span>
                                         <span className="elementor-icon-list-text">
-                                          130 LEE AVE SUITE 638 BROOKLYN, NY
-                                          11211
+                                          {/* 130 LEE AVE SUITE 638 BROOKLYN, NY
+                                          11211 */}
+                                          {reachOut.address}
                                         </span>
                                       </a>
                                     </li>
@@ -133,8 +138,10 @@ const SideMenu = ({showSideMenu,setSidemenustate}:any) => {
                                           ></i>{" "}
                                         </span>
                                         <span className="elementor-icon-list-text">
-                                          +1 347 844 0132 <br />
-                                          Office : +1 347 365 4373
+                                       {reachOut.telephone} <br />
+                                          Office : {reachOut.telephone2}
+                                          {/* +1 347 844 0132 <br />
+                                          Office : +1 347 365 4373 */}
                                         </span>
                                       </a>
                                     </li>
@@ -147,7 +154,7 @@ const SideMenu = ({showSideMenu,setSidemenustate}:any) => {
                                           ></i>{" "}
                                         </span>
                                         <span className="elementor-icon-list-text">
-                                          joel@friedkon.com
+                                        {reachOut.email}
                                         </span>
                                       </a>
                                     </li>

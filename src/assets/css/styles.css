@@ -168,3 +168,6 @@ form.submitting .wpcf7-spinner {
 }
 /* ----- */
 
+.elementor img{
+	width:40px;
+}

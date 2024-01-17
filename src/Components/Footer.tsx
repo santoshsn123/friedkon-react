@@ -1,6 +1,12 @@
 import React from "react";
+import EditButton from "./EditButton";
 
-const Footer = () => {
+const Footer = ({
+  admin,
+  websiteData: {
+    reachOut = {},
+  },
+}: any) => {
   return (
     <footer id="colophon" className="site-footer">
       <div className="site-footer-main">
@@ -223,6 +229,8 @@ const Footer = () => {
                                               <h6 className="cs-title">
                                                 Reach Out
                                               </h6>
+                                              <EditButton admin={admin} url={`admin/reach-out-management/edit/${reachOut._id}`} />
+                                       
                                             </div>
                                           </div>
                                         </div>
@@ -237,21 +245,24 @@ const Footer = () => {
                                               <li className="elementor-icon-list-item">
                                                 <a href="mailto:joel@friedkon.com">
                                                   <span className="elementor-icon-list-text">
-                                                    Email: joel@friedkon.com
+                                                    Email: {reachOut.email}
+                                                    {/* joel@friedkon.com */}
                                                   </span>
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
-                                                <a href="tel:+41223456689">
+                                                <a href="tel:{reachOut.telephone}">
                                                   <span className="elementor-icon-list-text">
-                                                    Telephone: +41 22 345 66 89
+                                                    Telephone: {reachOut.telephone}
+                                                    {/* +41 22 345 66 89 */}
                                                   </span>
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
                                                 <span className="elementor-icon-list-text">
-                                                  Address: 130 LEE AVE SUITE 638
-                                                  BROOKLYN, NY 11211
+                                                {reachOut.address}
+                                                  {/* Address: 130 LEE AVE SUITE 638
+                                                  BROOKLYN, NY 11211 */}
                                                 </span>
                                               </li>
                                             </ul>
@@ -265,7 +276,7 @@ const Footer = () => {
                                         >
                                           <div className="elementor-widget-container">
                                             <a
-                                              href="https://www.google.com/maps/place/130+Lee+Ave+%23638,+Brooklyn,+NY+11211,+USA/@40.7036957,-73.96042,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25be7bc32b6e9:0xe3e20f0fa838df7f!8m2!3d40.7036957!4d-73.9578451?entry=ttu"
+                                              href={reachOut.mapLink}
                                               target="_blank"
                                               className="elementor-button-link button cs-btn-underline cs-btn-small"
                                               role="button"

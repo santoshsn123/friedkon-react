@@ -30,7 +30,8 @@ const Home = () => {
       'features',
       'testimonial-heading',
       'testimonial',
-      'welcometext'
+      'welcometext',
+      'reachout'
     ];
 
     Promise.all(apiEndpoints.map(getAPIData))
@@ -46,19 +47,21 @@ const Home = () => {
           { data: [testimonialHeading] },
           { data: testimonial },
           { data: [welcometext] },
+          { data: [reachOut] },
         ]: any) => {
-          console.log({
-            banner,
-            belowBannerText,
-            qualityText,
-            plans,
-            pastWork,
-            featureHeading,
-            features,
-            testimonialHeading,
-            testimonial,
-            welcometext
-          });
+          // console.log({
+          //   banner,
+          //   belowBannerText,
+          //   qualityText,
+          //   plans,
+          //   pastWork,
+          //   featureHeading,
+          //   features,
+          //   testimonialHeading,
+          //   testimonial,
+          //   welcometext,
+          //   reachOut
+          // });
           setWebsiteData({
             banner,
             belowBannerText,
@@ -68,7 +71,8 @@ const Home = () => {
             featureHeading,
             features, testimonialHeading,
             testimonial,
-            welcometext
+            welcometext,
+            reachOut
           });
         }
       )
@@ -93,11 +97,12 @@ const Home = () => {
         {/* <Button variant="success" onClick={modalShow}>  
         Launch demo modal  
       </Button>  */}
-        <Footer></Footer>
+        <Footer websiteData={websiteData} admin={admin} ></Footer>
       </div>
       <SideMenu
         setSidemenustate={() => setSidemenustate("")}
         showSideMenu={showSideMenu}
+        websiteData={websiteData} admin={admin} 
       />
 
       <Modal show={show} onHide={modalClose}>

@@ -1,4 +1,6 @@
 import parse from "html-react-parser";
+import EditButton from "./EditButton";
+import { url } from "inspector";
 
 const SideContent = ({
   admin,
@@ -74,18 +76,8 @@ const SideContent = ({
 																					</p> */}
                                           {parse(banner.description || "")}
                                         </div>
-                                        {admin && (
-											 <img
-											 onClick={() =>
-											   window.open(
-												 `admin/main-banner-text-management/edit/${banner._id}`
-											   )
-											 }
-											 src="/images/edit.png"
-											 className="edit-icon"
-											 alt="Edit"
-										   />
-                                        )}
+                                       <EditButton admin={admin} url={`admin/main-banner-text-management/edit/${banner._id}`} />
+                                       
                                       </div>
                                     </div>
                                   </div>
@@ -258,19 +250,8 @@ const SideContent = ({
                                             belowBannerText.description || ""
                                           )}
                                         </div>
-                                        {admin && (
-											<img
-											onClick={() =>
-											  window.open(
-												`admin/below-banner-text-management/edit/${belowBannerText._id}`
-											  )
-											}
-											src="/images/edit.png"
-											className="edit-icon"
-											alt="Edit"
-										  />
-                                          
-                                        )}
+                                        <EditButton admin={admin} url={`admin/below-banner-text-management/edit/${belowBannerText._id}`} />
+                                       
                                         <div className="cs-title-btn">
                                           <a
                                             className="button elementor-button-link cs-btn-color-secondary"
@@ -351,19 +332,7 @@ const SideContent = ({
                                           </span>
                                         </li>
                                       </ul>
-                                      {admin && (
-										<img
-										onClick={() =>
-										  window.open(
-											`admin/past-work-management/edit/${pastWork[0]?._id}`
-										  )
-										}
-										src="/images/edit.png"
-										className="edit-icon"
-										alt="Edit"
-									  />
-                                      
-                                      )}
+                                      <EditButton admin={admin} url={`admin/past-work-management/edit/${pastWork[0]?._id}`} />
                                     </div>
                                   </div>
                                   <div
@@ -400,31 +369,19 @@ const SideContent = ({
                                     <div className="elementor-widget-container">
                                       <ul className="cs-list cs-list-type-unordered">
                                         <li>
-                                          {" "}
                                           <span className="list-icon color-primary">
                                             <i
                                               aria-hidden="true"
                                               className="fas fa-circle"
                                             ></i>
-                                          </span>{" "}
+                                          </span>
                                           <span className="list-content">
                                             {/* Expert with making perfect base */}
                                             {pastWork[1]?.title}
                                           </span>
                                         </li>
                                       </ul>
-                                      {admin && (
-										<img
-										onClick={() =>
-										  window.open(
-											`admin/past-work-management/edit/${pastWork[1]?._id}`
-										  )
-										}
-										src="/images/edit.png"
-										className="edit-icon"
-										alt="Edit"
-									  />
-                                      )}
+                                      <EditButton admin={admin} url={`admin/past-work-management/edit/${pastWork[1]?._id}`} />
                                     </div>
                                   </div>
                                 </div>
@@ -532,18 +489,7 @@ const SideContent = ({
                                           </span>
                                         </li>
                                       </ul>
-                                      {admin && (
-										<img
-										onClick={() =>
-										  window.open(
-											`admin/past-work-management/edit/${pastWork[2]?._id}`
-										  )
-										}
-										src="/images/edit.png"
-										className="edit-icon"
-										alt="Edit"
-									  />
-                                      )}
+                                      <EditButton admin={admin} url={`admin/past-work-management/edit/${pastWork[2]?._id}`} />
                                     </div>
                                   </div>
                                   <div
@@ -592,18 +538,7 @@ const SideContent = ({
                                           </span>
                                         </li>
                                       </ul>
-                                      {admin && (
-										<img
-										onClick={() =>
-										  window.open(
-											`admin/past-work-management/edit/${pastWork[3]?._id}`
-										  )
-										}
-										src="/images/edit.png"
-										className="edit-icon"
-										alt="Edit"
-									  />
-                                      )}
+                                      <EditButton admin={admin} url={`admin/past-work-management/edit/${pastWork[3]?._id}`} />
                                     </div>
                                   </div>
                                 </div>
@@ -749,25 +684,8 @@ const SideContent = ({
                                             {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, architecto accusamus. Repellendus, iure dolorum dolores laudantium sapiente exercitationem temporibus fugit deleniti delectus repellat laborum earum! Illo incidunt suscipit dolore quidem! */}
                                           </p>
                                         </div>
-                                        {admin && (
-											<img
-											onClick={() =>
-											  window.open(
-												`admin/quality-text-management/edit/${qualityText?._id}`
-											  )
-											}
-											src="/images/edit.png"
-											className="edit-icon"
-											alt="Edit"
-										  />
-                                        )}
-                                        {/* <div className="cs-title-btn">
-																					<a className="button elementor-button-link cs-btn-color-secondary"
-																						role="button" href="#">
-																						<span className="cs-btn-text">View
-																							Packages</span> 
-																							</a>
-																				</div> */}
+                                        <EditButton admin={admin} url= {`admin/quality-text-management/edit/${qualityText?._id}`}/>
+                                       
                                       </div>
                                     </div>
                                   </div>
@@ -860,18 +778,7 @@ const SideContent = ({
 
                                             {/* <a className="cs-cta-link" href="#"></a> */}
                                           </div>
-                                          {admin && (
-											<img
-											onClick={() =>
-											  window.open(
-												`admin/plan-management/edit/${qualityText?._id}`
-											  )
-											}
-											src="/images/edit.png"
-											className="edit-icon"
-											alt="Edit"
-										  />
-                                          )}
+                                          <EditButton admin={admin} url={`admin/plan-management/edit/${qualityText?._id}`} />
                                         </div>
                                       </div>
                                     </div>
@@ -1052,18 +959,7 @@ const SideContent = ({
                                           </p> */}
 										  {parse(welcometext.description || '')}
                                         </div>
-										{admin && (
-                                          <img
-                                            onClick={() =>
-                                              window.open(
-                                                `/admin/welcome-text-management/edit/${welcometext._id}`
-                                              )
-                                            }
-                                            src="/images/edit.png"
-                                            className="edit-icon"
-                                            alt="Edit"
-                                          />
-                                        )}
+                                        <EditButton admin={admin} url={`/admin/welcome-text-management/edit/${welcometext._id}`}/>
                                       </div>
                                     </div>
                                   </div>
@@ -1109,18 +1005,8 @@ const SideContent = ({
 
                                           {featureHeading.title}
                                         </h3>
-                                        {admin && (
-                                          <img
-                                            onClick={() =>
-                                              window.open(
-                                                `/admin/feature-heading-management/edit/${featureHeading._id}`
-                                              )
-                                            }
-                                            src="/images/edit.png"
-                                            className="edit-icon"
-                                            alt="Edit"
-                                          />
-                                        )}
+                                        <EditButton admin={admin} url={`/admin/feature-heading-management/edit/${featureHeading._id}`}/>
+
                                       </div>
                                     </div>
                                   </div>
@@ -1165,18 +1051,8 @@ const SideContent = ({
                                                     </div>
                                                   </div>
                                                 </div>
-                                                {admin && (
-                                                  <img
-                                                    onClick={() =>
-                                                      window.open(
-                                                        `/admin/feature-management/edit/${feat._id}`
-                                                      )
-                                                    }
-                                                    src="/images/edit.png"
-                                                    className="edit-icon"
-                                                    alt="Edit"
-                                                  />
-                                                )}
+                                                <EditButton admin={admin} url={`/admin/feature-management/edit/${feat._id}`}/>
+                                               
                                               </div>
                                             ))}
 
@@ -1382,18 +1258,8 @@ const SideContent = ({
                                           {/* What They Say About Us */}
                                           {testimonialHeading.title}
                                         </h3>
-                                        {admin && (
-                                          <img
-                                            onClick={() =>
-                                              window.open(
-                                                `admin/testimonial-heading-management/edit/${testimonialHeading._id}`
-                                              )
-                                            }
-                                            src="/images/edit.png"
-                                            className="edit-icon"
-                                            alt="Edit"
-                                          />
-                                        )}
+                                        <EditButton admin={admin} url={`admin/testimonial-heading-management/edit/${testimonialHeading._id}`} />
+                                      
                                       </div>
                                     </div>
                                   </div>
@@ -1462,18 +1328,7 @@ const SideContent = ({
                                                               {/* Contruction CEO */}
                                                               {test.position}
                                                             </div>
-                                                            {admin && (
-                                                              <img
-                                                                onClick={() =>
-                                                                  window.open(
-                                                                    `admin/testimonial-management/edit/${test._id}`
-                                                                  )
-                                                                }
-                                                                src="/images/edit.png"
-                                                                className="edit-icon"
-                                                                alt="Edit"
-                                                              />
-                                                            )}
+                                                            <EditButton admin={admin} url={ `admin/testimonial-management/edit/${test._id}`} />
                                                           </div>
                                                         </div>
                                                       </div>

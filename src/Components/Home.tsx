@@ -4,58 +4,118 @@ import SideContent from "./SideContent";
 import Footer from "./Footer";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
-import {Modal, Button} from 'react-bootstrap';  
+import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 const Home = () => {
-  const [showSideMenu,setSidemenustate] = useState('');
+  const [showSideMenu, setSidemenustate] = useState("");
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
 
-  const [banner,setBanner] = useState([]);
-useEffect(() => {
-  
-  axios.get(apiUrl+'/banner').then(res=>{
-    setBanner(res.data[0]);
-  })
-},[])
+  const [admin, setAdmin] = useState("");
+  const [websiteData, setWebsiteData] = useState({});
 
-  const [show, setShow] = useState(false);  
-  
-  const modalClose = () => setShow(false);  
-  const modalShow = () => setShow(true);  
+  useEffect(() => {
+    setAdmin(localStorage.getItem("loggedInUser") || "");
+  }, []);
+
+  useEffect(() => {
+    const apiEndpoints = [
+      'banner',
+      "below-banner-text",
+      "quality-text",
+      "plan",
+      "past-work",
+      'feature-heading',
+      'features',
+      'testimonial-heading',
+      'testimonial',
+      'welcometext'
+    ];
+
+    Promise.all(apiEndpoints.map(getAPIData))
+      .then(
+        ([
+          { data: [banner], },
+          { data: [belowBannerText], },
+          { data: [qualityText],},
+          { data: plans },
+          { data: pastWork },
+          { data: [featureHeading] },
+          { data: features },
+          { data: [testimonialHeading] },
+          { data: testimonial },
+          { data: [welcometext] },
+        ]: any) => {
+          console.log({
+            banner,
+            belowBannerText,
+            qualityText,
+            plans,
+            pastWork,
+            featureHeading,
+            features,
+            testimonialHeading,
+            testimonial,
+            welcometext
+          });
+          setWebsiteData({
+            banner,
+            belowBannerText,
+            qualityText,
+            plans,
+            pastWork,
+            featureHeading,
+            features, testimonialHeading,
+            testimonial,
+            welcometext
+          });
+        }
+      )
+      .catch((error) => console.log(error));
+  }, []);
+
+  const getAPIData = async (url: string) => await axios.get(`${apiUrl}/${url}`);
+
+  const [show, setShow] = useState(false);
+
+  const modalClose = () => setShow(false);
+  const modalShow = () => setShow(true);
 
   return (
     <>
       <div id="page">
-        <Header setSidemenustate={()=>setSidemenustate('show')}></Header>
-      
+        <Header setSidemenustate={() => setSidemenustate("show")}></Header>
+
         <StickyHeader />
-      
-        <SideContent banner={banner} />
-        <Button variant="success" onClick={modalShow}>  
+
+        <SideContent websiteData={websiteData} admin={admin} />
+        {/* <Button variant="success" onClick={modalShow}>  
         Launch demo modal  
-      </Button> 
-        <Footer ></Footer>
+      </Button>  */}
+        <Footer></Footer>
       </div>
-      <SideMenu setSidemenustate={()=>setSidemenustate('')} showSideMenu={showSideMenu} />
+      <SideMenu
+        setSidemenustate={() => setSidemenustate("")}
+        showSideMenu={showSideMenu}
+      />
 
-      <Modal show={show} onHide={modalClose}>  
-  <Modal.Header closeButton>  
-    <Modal.Title>Title for Modal</Modal.Title>  
-  </Modal.Header>  
-  
-  <Modal.Body>  
-    <p>Body Content.</p>  
-  </Modal.Body>  
-  
-  <Modal.Footer>  
-    <Button variant="secondary" onClick={modalClose}>Close Modal</Button>  
-    <Button variant="primary">Save changes</Button>  
-  </Modal.Footer>  
-</Modal>  
+      <Modal show={show} onHide={modalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Title for Modal</Modal.Title>
+        </Modal.Header>
 
+        <Modal.Body>
+          <p>Body Content.</p>
+        </Modal.Body>
 
+        <Modal.Footer>
+          <Button variant="secondary" onClick={modalClose}>
+            Close Modal
+          </Button>
+          <Button variant="primary">Save changes</Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

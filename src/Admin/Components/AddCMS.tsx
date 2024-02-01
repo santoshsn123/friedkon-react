@@ -50,7 +50,6 @@ const AddCMS = ({ appData }: any) => {
       },
     };
     let request;
-    console.log("form submittion ", data);
     if (paramId) {
       request = axios.put(
         apiUrl + appData?.apiURL + "/" + paramId,
@@ -66,8 +65,9 @@ const AddCMS = ({ appData }: any) => {
       if (paramId) {
         urlArray.pop();
       }
-      window.location.href = urlArray.join("/");
-    });
+      // window.location.href = urlArray.join("/");
+      window.open(urlArray.join("/"),'_self')
+    }).catch(error=>console.error('Something went wrong at form submitting:', error));
   };
   return (
     <>
@@ -91,6 +91,8 @@ const AddCMS = ({ appData }: any) => {
                   errors={errors}
                   register={register}
                   formData={formData}
+                  setValue={setValue} 
+                  getValues={getValues}
                 />
               );
             case "textarea":

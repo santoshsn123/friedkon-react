@@ -165,6 +165,7 @@ export default [
         input: "image",
         dataType: "String",
         required: false,
+        size: 1920/1070,
       },
       // {
       //   id: 5,

@@ -29,6 +29,7 @@ const SideContent = ({
                   data-elementor-type="wp-page"
                   data-elementor-id="9"
                   className="elementor elementor-9"
+                   
                 >
                   <div className="elementor-inner">
                     <div className="elementor-section-wrap">
@@ -39,11 +40,12 @@ const SideContent = ({
                         data-settings="{'background_background':'classNameic'}"
                         data-cs-parallax-y="120"
                         data-cs-background-image={fileUrl + banner.image}
+                        style={{backgroundImage:`url(${fileUrl + banner.image})`}}
                       >
                         {/* // "/images/img-50.jpg" */}
-                        <div className="parallax-img-container">
+                        {/* <div className="parallax-img-container">
                           <img src={fileUrl + banner.image} />
-                        </div>
+                        </div> */}
                         <div className="elementor-background-overlay"></div>
                         <div className="elementor-container elementor-column-gap-no">
                           <div className="elementor-row">

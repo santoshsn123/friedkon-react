@@ -1,12 +1,7 @@
 import React from "react";
 import EditButton from "./EditButton";
 
-const Footer = ({
-  admin,
-  websiteData: {
-    reachOut = {},
-  },
-}: any) => {
+const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
   return (
     <footer id="colophon" className="site-footer">
       <div className="site-footer-main">
@@ -93,7 +88,6 @@ const Footer = ({
                                         <input
                                           name="AGREE_TO_TERMS"
                                           type="checkbox"
-                                          value="1"
                                         />
                                         I agree to the{" "}
                                         <a
@@ -109,17 +103,11 @@ const Footer = ({
                                   <input
                                     type="hidden"
                                     name="_mc4wp_timestamp"
-                                    value="1701704078"
                                   />
-                                  <input
-                                    type="hidden"
-                                    name="_mc4wp_form_id"
-                                    value="7"
-                                  />
+                                  <input type="hidden" name="_mc4wp_form_id" />
                                   <input
                                     type="hidden"
                                     name="_mc4wp_form_element_id"
-                                    value="mc4wp-form-1"
                                   />
                                 </form>
                               </div>
@@ -147,7 +135,14 @@ const Footer = ({
                                           <div className="elementor-widget-container">
                                             <div className="cs-title-wrap">
                                               <h6 className="cs-title">
-                                                COZYSTAY
+                                                <img
+                                                  width="255"
+                                                  height="51"
+                                                  src="/images/logo-3-255x51.png"
+                                                  className="attachment-cozystay_255x9999 size-cozystay_255x9999 wp-image-184"
+                                                  alt=""
+                                                  sizes="(max-width: 255px) 100vw, 255px"
+                                                />
                                               </h6>
                                               <div className="cs-title-text">
                                                 <p>
@@ -229,8 +224,10 @@ const Footer = ({
                                               <h6 className="cs-title">
                                                 Reach Out
                                               </h6>
-                                              <EditButton admin={admin} url={`admin/reach-out-management/edit/${reachOut._id}`} />
-                                       
+                                              <EditButton
+                                                admin={admin}
+                                                url={`admin/reach-out-management/edit/${reachOut._id}`}
+                                              />
                                             </div>
                                           </div>
                                         </div>
@@ -253,14 +250,15 @@ const Footer = ({
                                               <li className="elementor-icon-list-item">
                                                 <a href="tel:{reachOut.telephone}">
                                                   <span className="elementor-icon-list-text">
-                                                    Telephone: {reachOut.telephone}
+                                                    Telephone: 
+                                                    {reachOut.telephone}
                                                     {/* +41 22 345 66 89 */}
                                                   </span>
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
                                                 <span className="elementor-icon-list-text">
-                                                {reachOut.address}
+                                                  {reachOut.address}
                                                   {/* Address: 130 LEE AVE SUITE 638
                                                   BROOKLYN, NY 11211 */}
                                                 </span>
@@ -276,14 +274,14 @@ const Footer = ({
                                         >
                                           <div className="elementor-widget-container">
                                             <a
-                                              href={reachOut.mapLink}
+                                              href={reachOut.locationlink}
                                               target="_blank"
                                               className="elementor-button-link button cs-btn-underline cs-btn-small"
                                               role="button"
                                             >
                                               <span className="cs-btn-text">
                                                 Get Directions
-                                              </span>{" "}
+                                              </span>
                                             </a>
                                           </div>
                                         </div>

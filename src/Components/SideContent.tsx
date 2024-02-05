@@ -15,6 +15,7 @@ const SideContent = ({
     testimonialHeading = {},
     testimonial = [],
     welcometext = {},
+    aboutUsBGImage = {},
   },
 }: any) => {
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
@@ -90,6 +91,7 @@ const SideContent = ({
                               className="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-79386528 dark-color elementor-hidden-tablet elementor-hidden-mobile"
                               data-id="79386528"
                               data-element_type="column"
+                              style={{display:'none'}}
                               data-settings="{'background_background':'classNameic'}"
                             >
                               <div className="elementor-column-wrap elementor-element-populated">
@@ -152,12 +154,10 @@ const SideContent = ({
                                                             <input
                                                               type="text"
                                                               className="date-range-picker"
-                                                              value="2023-12-04 - 2023-12-05"
                                                               readOnly
                                                             />
                                                             <input
                                                               type="text"
-                                                              value="2023-12-04"
                                                               className="check-in-date"
                                                               name="checkin"
                                                               readOnly
@@ -196,7 +196,6 @@ const SideContent = ({
                                                       <input
                                                         type="hidden"
                                                         name="search_rooms"
-                                                        value=""
                                                         readOnly
                                                       />
                                                     </form>
@@ -576,7 +575,7 @@ const SideContent = ({
                                         role="button"
                                       >
                                         <span className="cs-btn-text">
-                                          Explore More Activities
+                                          About Us
                                         </span>
                                       </a>
                                     </div>
@@ -593,11 +592,10 @@ const SideContent = ({
                         data-element_type="section"
                         data-settings="{'background_background':'classNameic'}"
                         data-cs-parallax-y="100"
-                        data-cs-background-image="/images/cement_truck.jpeg"
+                        data-cs-background-image={fileUrl + aboutUsBGImage.image}
+                        style={{backgroundImage:`url(${fileUrl + aboutUsBGImage.image})`}}
                       >
-                        <div className="parallax-img-container">
-                          <img src="/images/cement_truck.jpeg" />
-                        </div>
+                        <EditButton admin={admin} url={`/admin/about-us-background-image/edit/${aboutUsBGImage._id}`} />
                         <div className="elementor-container elementor-column-gap-default">
                           <div className="elementor-row">
                             <div
@@ -670,12 +668,10 @@ const SideContent = ({
                                       <div className="cs-title-wrap">
                                         <div className="cs-subtitle-wrap">
                                           <span className="cs-subtitle">
-                                            {/* Things to make sure before starting work */}
                                             {qualityText.subtitle}
                                           </span>
                                         </div>
                                         <h3 className="cs-title">
-                                          {/* Make sure about the quality of work delivered by agency in previously */}
                                           {qualityText.title}
                                         </h3>
                                         <div className="cs-title-text">
@@ -683,7 +679,6 @@ const SideContent = ({
                                             {parse(
                                               qualityText.description || ""
                                             )}
-                                            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, architecto accusamus. Repellendus, iure dolorum dolores laudantium sapiente exercitationem temporibus fugit deleniti delectus repellat laborum earum! Illo incidunt suscipit dolore quidem! */}
                                           </p>
                                         </div>
                                         <EditButton admin={admin} url= {`admin/quality-text-management/edit/${qualityText?._id}`}/>
@@ -780,7 +775,7 @@ const SideContent = ({
 
                                             {/* <a className="cs-cta-link" href="#"></a> */}
                                           </div>
-                                          <EditButton admin={admin} url={`admin/plan-management/edit/${qualityText?._id}`} />
+                                          <EditButton admin={admin} url={`admin/plan-management/edit/${plan?._id}`} />
                                         </div>
                                       </div>
                                     </div>
@@ -1024,7 +1019,7 @@ const SideContent = ({
                                           {features
                                             .reverse()
                                             .map((feat: any) => (
-                                              <div className="cs-info-box-item elementor-repeater-item-cccff81">
+                                              <div key={feat._id} className="cs-info-box-item elementor-repeater-item-cccff81">
                                                 <div className="cs-item-container">
                                                   {/* <div
 																								className="cs-info-box-img">
@@ -1257,7 +1252,6 @@ const SideContent = ({
                                           </span>
                                         </div>
                                         <h3 className="cs-title">
-                                          {/* What They Say About Us */}
                                           {testimonialHeading.title}
                                         </h3>
                                         <EditButton admin={admin} url={`admin/testimonial-heading-management/edit/${testimonialHeading._id}`} />
@@ -1286,7 +1280,7 @@ const SideContent = ({
                                             <div className="slick-track">
                                               {testimonial.map(
                                                 (test: any, index: number) => (
-                                                  <div
+                                                  <div key={test._id}
                                                     className="cs-ts-item slick-slide slick-cloned"
                                                     data-slick-index="-3"
                                                     id=""

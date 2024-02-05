@@ -45,6 +45,7 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
+        size:332/202
       },
       {
         id: 4,
@@ -276,6 +277,7 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
+        size:1
       },
     ],
   },
@@ -353,6 +355,7 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
+        size:780/666
       },
     ],
   },
@@ -485,6 +488,7 @@ export default [
         input: "image",
         isActive: true,
         dataType: "String",
+        size:1
       },
     ],
   },
@@ -595,6 +599,30 @@ export default [
         input: "text",
         isActive: true,
         dataType: "String",
+      },
+    ],
+  },
+  {
+    id: 13,
+    title: "About Us Background Image",
+    router: "/about-us-background-image",
+    dbTableName: "AboutUsBGImage",
+    isEditable: true,
+    apiURL: "aboutus-bg-image",
+    multiRecords: false,
+    data: [
+      {
+        id: 2,
+        name: "image",
+        displayName: "Background Image",
+        order: 2,
+        editable: true,
+        displayOnTable: true,
+        input: "image",
+        isActive: true,
+        dataType: "String",
+        required: false,
+        size: 1920/1438,
       },
     ],
   },

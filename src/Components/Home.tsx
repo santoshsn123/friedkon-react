@@ -31,7 +31,8 @@ const Home = () => {
       'testimonial-heading',
       'testimonial',
       'welcometext',
-      'reachout'
+      'reachout',
+      'aboutus-bg-image'
     ];
 
     Promise.all(apiEndpoints.map(getAPIData))
@@ -48,6 +49,7 @@ const Home = () => {
           { data: testimonial },
           { data: [welcometext] },
           { data: [reachOut] },
+          { data: [aboutUsBGImage] },
         ]: any) => {
           // console.log({
           //   banner,
@@ -72,7 +74,8 @@ const Home = () => {
             features, testimonialHeading,
             testimonial,
             welcometext,
-            reachOut
+            reachOut,
+            aboutUsBGImage
           });
         }
       )

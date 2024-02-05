@@ -6,17 +6,15 @@ import { canvasPreview } from "./CanvasPreview";
 
 const FileUpload = ({
   formData,
-  register,
   errors,
   setValue,
-  getValues,
+  watch
 }: any) => {
   const imgRef = useRef<HTMLImageElement | any>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement | any>(null);
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
 
   const [image, onImageSelected] = useState<any>("");
-  const [oldImage, setOldImage] = useState<any>("");
 
   const handleOnChange = (event: any) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -27,10 +25,6 @@ const FileUpload = ({
       };
     }
   };
-
-  useEffect(() => {
-    setOldImage(`${fileUrl}${getValues(formData.name)}`);
-  }, [getValues(formData.name)]);
 
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop | any>();
@@ -47,7 +41,8 @@ const FileUpload = ({
         onChange={handleOnChange}
         accept="image/*"
       />
-      {!image && <img src={oldImage} />}
+  
+      {!image && watch(formData.name) && <img src={`${fileUrl}${watch(formData.name)}`} />}
 
       {image && (
         <div className="form-group">

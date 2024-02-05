@@ -10,7 +10,6 @@ import Radio from "./formFields/Radio";
 import CKEditorComponent from "./formFields/CKEditor";
 
 const AddCMS = ({ appData }: any) => {
-  console.log("see  this ", appData);
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const {
@@ -19,7 +18,7 @@ const AddCMS = ({ appData }: any) => {
     formState: { errors },
     setValue,
     getValues,
-    watch
+    watch,
   } = useForm();
 
   const { id: paramId } = useParams();
@@ -30,9 +29,8 @@ const AddCMS = ({ appData }: any) => {
         Object.keys(res.data).forEach((key) => {
           if (key !== "_id" && key !== "__v") {
             setValue(key, res.data[key]);
-            console.log("see data here :- ", key, res.data[key]);
             appData.data.map((item: any) => {
-              if (item.name === "image") {
+              if (item.input === "image") {
                 item.imageUrl = res.data[key];
               }
               return item;
@@ -86,14 +84,13 @@ const AddCMS = ({ appData }: any) => {
               );
             case "image":
               return (
-                <FileUpload
+                 <FileUpload
                   key={formData.id}
                   errors={errors}
-                  register={register}
                   formData={formData}
                   setValue={setValue} 
-                  getValues={getValues}
-                />
+                  watch={watch}
+                />               
               );
             case "textarea":
               return (
@@ -131,21 +128,7 @@ const AddCMS = ({ appData }: any) => {
                 setValue={setValue} />)
           }
         })}
-        {/* {appData.data.map(
-          (formData: any) =>
-            formData.input === "image" && (
-              <>
-              <FileUpload
-                key={formData.id}
-                errors={errors}
-                register={register}
-                formData={formData}
-              />
-               <img src={`${fileUrl}${getValues('image') || formData.imageUrl}`} style={{width:50}}/>
-               <br></br>
-               </>
-            )
-        )} */}
+       
         <button type="submit" className="btn btn-primary mt-4 mb-6">
           {paramId ? "Update" : "Add New"}
         </button>

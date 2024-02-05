@@ -1,20 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
+import ModalBt from "../../Components/ModalBt";
+import { useNavigate } from "react-router";
 
 export const CMS = ({ appData }: any) => {
+  const navigate = useNavigate();
   const { data: column } = appData;
-  // console.log('see here :- ',appData);multiRecords
+  
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const [tableData, setTableData] = useState([]);
+  const [imageName, setImageName] = useState<string>("");
+  const [imageModalShow, setImageModalShow] = useState<boolean>(false);
   useEffect(() => {
     fetchCompleteData();
   }, [appData]);
 
   const fetchCompleteData = () => {
     axios.get(apiUrl + appData?.apiURL).then((data: any) => {
-      console.log(data.data);
       setTableData(data.data);
     });
   };
@@ -28,14 +32,23 @@ export const CMS = ({ appData }: any) => {
     }
   };
 
+  function showModal(imageName: string) {
+    setImageName(imageName);
+    setImageModalShow(true);
+  }
   function getFormatedColumnData(col: any, row: any) {
-    console.log('col, row :- ',col, row);
     switch (col.input) {
       case "image":
-        return <img src={`${fileUrl}${row[col.name]}`} style={{ width: 50 }} />;
+        return (
+          <img
+            onClick={() => showModal(row[col.name])}
+            src={`${fileUrl}${row[col.name]}`}
+            style={{ width: 100, cursor: "pointer" }}
+          />
+        );
         break;
       case "ckeditor":
-        return parse(row[col.name] || '');
+        return parse(row[col.name] || "");
         break;
       default:
         return row[col.name];
@@ -45,12 +58,12 @@ export const CMS = ({ appData }: any) => {
   return (
     <>
       <h2>{appData.title}</h2>
-      <div>
+      <div style={{cursor:'pointer'}}>
         {appData.multiRecords && (
-          <a href={`${window.location.href}/add`}>Add New</a>
+          <a onClick={()=>navigate(`add`)}>Add New</a>
         )}
         {appData.multiRecords === false && tableData.length < 1 && (
-          <a href={`${window.location.href}/add`}>Add New</a>
+          <a onClick={()=>navigate(`add`)}>Add New</a>
         )}
       </div>
       <table className="table">
@@ -71,26 +84,17 @@ export const CMS = ({ appData }: any) => {
                 {column.map((col: any) => {
                   if (col.displayOnTable) {
                     return (
-                      <td key={col.id}>
-                        {getFormatedColumnData(col, row)}
-
-                        {/* {col.input === "image" && (
-                          <img
-                            src={`${fileUrl}${row[col.name]}`}
-                            style={{ width: 50 }}
-                          />
-                        )}
-                        {col.input !== "image" && row[col.name]} */}
-                      </td>
+                      <td key={col.id}>{getFormatedColumnData(col, row)}</td>
                     );
                   }
                 })}
                 <td>
-                  <a href={`${window.location.href}/edit/${row._id}`}>Edit</a>
+                  <a style={{cursor:'pointer'}} onClick={()=>navigate(`edit/${row._id}`)}> 
+                    <img src="/images/edit.png" width="15px"  alt="Edit"/> 
+                  </a>
                   {tableData.length > 1 && appData.multiRecords && (
                     <>
-                      {" "}
-                      / <a onClick={() => deleteItem(row._id)}>Delete</a>
+                    &nbsp;|  <a style={{cursor:'pointer'}} onClick={() => deleteItem(row._id)}><img alt="Delete" width="15px" src="/images/delete.png" /></a>
                     </>
                   )}
                 </td>
@@ -99,6 +103,16 @@ export const CMS = ({ appData }: any) => {
           })}
         </tbody>
       </table>
+
+      <ModalBt
+        show={imageModalShow}
+        showFooter={false}
+        modalClose={() => {
+          setImageModalShow(false);
+        }}
+      >
+        <img src={`${fileUrl}${imageName}`} style={{ width: "100%" }} />
+      </ModalBt>
     </>
   );
 };

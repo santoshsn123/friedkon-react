@@ -211,10 +211,10 @@ const Header = ({setSidemenustate}:any) => {
 																																<input
 																																	type="text"
 																																	className="date-range-picker"
-																																	value="2023-12-04 - 2023-12-05" />
+																																	 />
 																																<input
 																																	type="text"
-																																	value="2023-12-04"
+																																	
 																																	className="check-in-date"
 																																	name="checkin"
 																																	 />
@@ -254,7 +254,7 @@ const Header = ({setSidemenustate}:any) => {
 																													<input
 																														type="hidden"
 																														name="search_rooms"
-																														value="" />
+																														/>
 																												</form>
 																											</div>
 																											<div

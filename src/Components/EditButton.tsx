@@ -1,4 +1,7 @@
-const EditButton = ({ admin, url }: any) => {
+import AddCMS from "../Admin/Components/AddCMS";
+import ModalBt from "./ModalBt";
+
+const EditButton = ({admin,url}: any) => {
   return (
     <>
       {admin && (

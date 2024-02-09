@@ -1,6 +1,5 @@
 const OurTeam = ({ teams = [], configId }: any) => {
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
-  console.log('checking teams',teams)
   return (
     <>
       <section

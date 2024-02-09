@@ -10,13 +10,14 @@ import Radio from "./formFields/Radio";
 import CKEditorComponent from "./formFields/CKEditor";
 
 const AddCMS = ({ appData,paramIdForModal }: any) => {
+
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setValue, 
     getValues,
     watch,
   } = useForm();

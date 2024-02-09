@@ -1,37 +1,32 @@
-import { useEffect, useState } from "react";
-import StickyHeader from "./StickyHeader";
-import Footer from "./Footer";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import SideMenu from "./SideMenu";
+import StickyHeader from "./StickyHeader";
+import SideContent from "./MainPageComponent";
 import axios from "axios";
+import Footer from "./Footer";
+import SideMenu from "./SideMenu";
 import MainPageComponent from "./MainPageComponent";
 import HomeBanner from "./HomeBanner";
-import BelowBanner from "./BelowBanner";
-import PastWork from "./PastWork";
-import BackgroundImageWithCircularBTN from "./BackgroundImageWithCircularBTN";
 import QualityText from "./QualityText";
-import PlanComponent from "./PlanComponent";
+import OurTeam from "./OurTeam";
 import WelcomeTextComponent from "./WelcomeTextComponent";
-import FeaturesComponent from "./FeaturesComponent";
-import Testimonials from "./Testimonials";
 
-const Home = () => {
+const AboutUs = () => {
   const [showSideMenu, setSidemenustate] = useState("");
+  const [websiteData, setWebsiteData] = useState<any>({});
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
 
   const [admin, setAdmin] = useState("");
-  const [websiteData, setWebsiteData] = useState<any>({});
 
   useEffect(() => {
     setAdmin(localStorage.getItem("loggedInUser") || "");
   }, []);
-
   useEffect(() => {
     const apiEndpoints = [
-      "banner",
+      "about-us-banner",
       "below-banner-text",
-      "quality-text",
+      "about-us-text",
       "plan",
       "past-work",
       "feature-heading",
@@ -44,6 +39,7 @@ const Home = () => {
       "social-media",
       "footer-about-us-text",
       "footer-background",
+      'team'
     ];
 
     Promise.all(apiEndpoints.map(getAPIData))
@@ -86,7 +82,11 @@ const Home = () => {
           {
             data: [footerBackground],
           },
+          {
+            data: teams,
+          },
         ]: any) => {
+          console.log("banner here :-", banner);
           setWebsiteData({
             banner,
             belowBannerText,
@@ -103,31 +103,34 @@ const Home = () => {
             socialMedia,
             footerAboutUsText,
             footerBackground,
+            teams
           });
         }
       )
       .catch((error) => console.log(error));
   }, []);
-
   const getAPIData = async (url: string) => await axios.get(`${apiUrl}/${url}`);
-
   return (
-    <>
-      <div id="page">
-        <Header setSidemenustate={() => setSidemenustate("show")}></Header>
+    <div id="page">
+      <Header setSidemenustate={() => setSidemenustate("show")}></Header>
+      <MainPageComponent>
+        <HomeBanner configId={17} banner={websiteData?.banner || {}} />
+        <QualityText
+          reverse={true}
+          configId={18}
+          qualityText={websiteData.qualityText}
+        />
+  <WelcomeTextComponent welcometext={websiteData.welcometext} />
+       <OurTeam teams={websiteData.teams} configId={19} />
 
-        <StickyHeader />
-
-        <MainPageComponent >
-          <HomeBanner configId={3} banner={websiteData?.banner || {}} />
-          <BelowBanner belowBannerText={websiteData.belowBannerText} />
+     
+        {/* <BelowBanner belowBannerText={websiteData.belowBannerText} />
           <PastWork pastWork={websiteData.pastWork} />
           <BackgroundImageWithCircularBTN
             aboutUsBGImage={websiteData.aboutUsBGImage}
           />
-          <QualityText configId={5} qualityText={websiteData.qualityText} />
-          <PlanComponent plans={websiteData.plans} />
-
+          
+<PlanComponent plans={websiteData.plans} />
           <WelcomeTextComponent welcometext={websiteData.welcometext} />
           <FeaturesComponent
             features={websiteData.features}
@@ -136,19 +139,17 @@ const Home = () => {
           <Testimonials
             testimonialHeading={websiteData.testimonialHeading}
             testimonial={websiteData.testimonial}
-          />
-        </MainPageComponent>
-
-        <Footer websiteData={websiteData} admin={admin}></Footer>
-      </div>
+          /> */}
+      </MainPageComponent>
+      <Footer websiteData={websiteData} admin={admin}></Footer>
       <SideMenu
         setSidemenustate={() => setSidemenustate("")}
         showSideMenu={showSideMenu}
         websiteData={websiteData}
         admin={admin}
       />
-    </>
+    </div>
   );
 };
 
-export default Home;
+export default AboutUs;

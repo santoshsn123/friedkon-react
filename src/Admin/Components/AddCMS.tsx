@@ -9,7 +9,7 @@ import DropDown from "./formFields/DropDown";
 import Radio from "./formFields/Radio";
 import CKEditorComponent from "./formFields/CKEditor";
 
-const AddCMS = ({ appData }: any) => {
+const AddCMS = ({ appData,paramIdForModal }: any) => {
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const {
@@ -21,8 +21,8 @@ const AddCMS = ({ appData }: any) => {
     watch,
   } = useForm();
 
-  const { id: paramId } = useParams();
-
+  const { id } = useParams();
+ const paramId = paramIdForModal?paramIdForModal:id;
   useEffect(() => {
     if (paramId) {
       axios.get(apiUrl + appData?.apiURL + "/" + paramId).then((res) => {
@@ -132,6 +132,12 @@ const AddCMS = ({ appData }: any) => {
         <button type="submit" className="btn btn-primary mt-4 mb-6">
           {paramId ? "Update" : "Add New"}
         </button>
+
+        {paramIdForModal  && (<> &nbsp; <button type="button" onClick={()=>{
+          window.open(`/admin${appData.router}/edit/${paramIdForModal}`);
+        }} className="btn btn-secondary mt-4 mb-6">
+         Edit in Full View
+        </button></>)}
       </form>
     </>
   );

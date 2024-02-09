@@ -7,8 +7,8 @@ const ModalBt = ({show,modalClose,title, showFooter=true,children,saveTitle='Sav
     {title && <Modal.Header closeButton>
       <Modal.Title>{title}</Modal.Title>
     </Modal.Header>}
-
-    <Modal.Body style={{padding: 0}}>
+    {/* style={{padding: 0}} */}
+    <Modal.Body >
      {children}
     </Modal.Body>
 

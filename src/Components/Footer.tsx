@@ -1,7 +1,17 @@
+import parse from "html-react-parser";
 import React from "react";
 import EditButton from "./EditButton";
 
-const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
+const Footer = ({
+  admin,
+  websiteData: {
+    reachOut = {},
+    socialMedia = {},
+    footerAboutUsText = {},
+    footerBackground = {},
+  },
+}: any) => {
+  const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   return (
     <footer id="colophon" className="site-footer">
       <div className="site-footer-main">
@@ -26,12 +36,22 @@ const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
                   data-element_type="section"
                   data-settings='{"background_background":"classNameic"}'
                   data-cs-parallax-y="80"
-                  data-cs-background-image="/images/cement_truck.jpeg"
+                  data-cs-background-image={fileUrl + footerBackground.image}
+                  style={{
+                    backgroundImage: `url(${fileUrl + footerBackground.image})`,
+                  }}
                 >
-                  <div className="parallax-img-container">
-                    <img src="/images/cement_truck.jpeg" />
+                  {/* <div className="parallax-img-container">
+                    <img src={fileUrl + footerBackground.image} />
+                  </div> */}
+                  <div className="elementor-background-overlay">
+                    <EditButton
+                      admin={admin}
+                      paramId={footerBackground._id}
+                      configId={16}
+                    />
                   </div>
-                  <div className="elementor-background-overlay"></div>
+
                   <div className="elementor-container elementor-column-gap-no">
                     <div className="elementor-row">
                       <div
@@ -145,15 +165,26 @@ const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
                                                 />
                                               </h6>
                                               <div className="cs-title-text">
+                                                <EditButton
+                                                  admin={admin}
+                                                  paramId={
+                                                    footerAboutUsText._id
+                                                  }
+                                                  configId={15}
+                                                />
                                                 <p>
-                                                  Founded in 1998, CozyStay
+                                                  {parse(
+                                                    footerAboutUsText.footeraboutustext ||
+                                                      ""
+                                                  )}
+                                                  {/* Founded in 1998, CozyStay
                                                   Lodge is a luxury boutique
                                                   hotel in the heart of Napa
                                                   Valley, immersing you in an
                                                   idyllic setting against the
                                                   pure sky. Stay, sip, and savor
                                                   the best of Napa wine country
-                                                  at CozyStay.
+                                                  at CozyStay. */}
                                                 </p>
                                               </div>
                                             </div>
@@ -170,32 +201,57 @@ const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
                                               id="23be821f-social-menu-container"
                                               className="social-navigation"
                                             >
+                                              <EditButton
+                                                admin={admin}
+                                                paramId={socialMedia._id}
+                                                configId={14}
+                                              />
+                                              {/* {JSON.stringify(socialMedia)} */}
                                               <ul
                                                 id="23be821f-social-menu"
                                                 className="social-nav menu"
                                               >
-                                                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-43">
-                                                  <a href="https://www.facebook.com/">
-                                                    Facebook
-                                                  </a>
-                                                </li>
+                                                {socialMedia.facebook && (
+                                                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-43">
+                                                    <a
+                                                      href={
+                                                        socialMedia.facebook
+                                                      }
+                                                      target="_blank"
+                                                    >
+                                                      Facebook
+                                                    </a>
+                                                  </li>
+                                                )}
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-44">
-                                                  <a href="https://www.twitter.com/">
+                                                  <a
+                                                    href={socialMedia.twitter}
+                                                    target="_blank"
+                                                  >
                                                     Twitter
                                                   </a>
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-45">
-                                                  <a href="https://www.pinterest.com/">
+                                                  <a
+                                                    href={socialMedia.pintrest}
+                                                    target="_blank"
+                                                  >
                                                     Pinterest
                                                   </a>
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-46">
-                                                  <a href="https://www.youtube.com/">
+                                                  <a
+                                                    href={socialMedia.youtube}
+                                                    target="_blank"
+                                                  >
                                                     YouTube
                                                   </a>
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-47">
-                                                  <a href="https://www.instagram.com/">
+                                                  <a
+                                                    href={socialMedia.instagram}
+                                                    target="_blank"
+                                                  >
                                                     Instagram
                                                   </a>
                                                 </li>
@@ -226,7 +282,8 @@ const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
                                               </h6>
                                               <EditButton
                                                 admin={admin}
-                                                url={`admin/reach-out-management/edit/${reachOut._id}`}
+                                                paramId={reachOut._id}
+                                                configId={12}
                                               />
                                             </div>
                                           </div>
@@ -250,7 +307,7 @@ const Footer = ({ admin, websiteData: { reachOut = {} } }: any) => {
                                               <li className="elementor-icon-list-item">
                                                 <a href="tel:{reachOut.telephone}">
                                                   <span className="elementor-icon-list-text">
-                                                    Telephone: 
+                                                    Telephone:
                                                     {reachOut.telephone}
                                                     {/* +41 22 345 66 89 */}
                                                   </span>

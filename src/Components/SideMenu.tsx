@@ -102,7 +102,9 @@ const SideMenu = ({showSideMenu,setSidemenustate, admin,  websiteData: {
                                 <div className="elementor-widget-container">
                                   <div className="cs-title-wrap">
                                     <h6 className="cs-title">Contact Info</h6>
-                                    <EditButton admin={admin} url={`admin/reach-out-management/edit/${reachOut._id}`} />
+                                    <EditButton admin={admin} 
+                                                paramId={reachOut._id} configId={12}  
+                                                 />
                                   </div>
                                 </div>
                               </div>

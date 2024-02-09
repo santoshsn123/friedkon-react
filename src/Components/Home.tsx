@@ -18,14 +18,7 @@ import Testimonials from "./Testimonials";
 const Home = () => {
   const [showSideMenu, setSidemenustate] = useState("");
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
-  const fileUrl = process.env.REACT_APP_FILE_BASEURL;
-
-  const [admin, setAdmin] = useState("");
   const [websiteData, setWebsiteData] = useState<any>({});
-
-  useEffect(() => {
-    setAdmin(localStorage.getItem("loggedInUser") || "");
-  }, []);
 
   useEffect(() => {
     const apiEndpoints = [
@@ -120,7 +113,7 @@ const Home = () => {
 
         <MainPageComponent >
           <HomeBanner configId={3} banner={websiteData?.banner || {}} />
-          <BelowBanner belowBannerText={websiteData.belowBannerText} />
+          <BelowBanner belowBannerText={websiteData.belowBannerText} configId={4} />
           <PastWork pastWork={websiteData.pastWork} />
           <BackgroundImageWithCircularBTN
             aboutUsBGImage={websiteData.aboutUsBGImage}
@@ -139,13 +132,12 @@ const Home = () => {
           />
         </MainPageComponent>
 
-        <Footer websiteData={websiteData} admin={admin}></Footer>
+        <Footer websiteData={websiteData}></Footer>
       </div>
       <SideMenu
         setSidemenustate={() => setSidemenustate("")}
         showSideMenu={showSideMenu}
         websiteData={websiteData}
-        admin={admin}
       />
     </>
   );

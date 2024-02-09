@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import EditButton from "./EditButton";
 
-const BelowBanner = ({belowBannerText={}}:any) => {
+const BelowBanner = ({belowBannerText={}, configId}:any) => {
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const admin = localStorage.getItem("loggedInUser") || "";
   return (
@@ -41,7 +41,7 @@ const BelowBanner = ({belowBannerText={}}:any) => {
                       <EditButton
                         admin={admin}
                         paramId={belowBannerText._id}
-                        configId={4}
+                        configId={configId}
                       />
 
                       <div className="cs-title-btn">

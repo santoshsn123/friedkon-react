@@ -1,6 +1,4 @@
-
 const Header = ({ setSidemenustate }: any) => {
-
   const getClassName = (page: any) => {
     const baseClasses =
       "menu-item menu-item-type-post_type menu-item-object-page menu-item-home  page_item page-item-9 current_page_item";
@@ -14,6 +12,10 @@ const Header = ({ setSidemenustate }: any) => {
           ? `${baseClasses} current-menu-item`
           : baseClasses;
       case "about-us":
+        return currentPage === page
+          ? `${baseClasses} current-menu-item`
+          : baseClasses;
+      case "services":
         return currentPage === page
           ? `${baseClasses} current-menu-item`
           : baseClasses;
@@ -100,9 +102,10 @@ const Header = ({ setSidemenustate }: any) => {
                                 </li>
                                 <li
                                   id="menu-item-41"
-                                  className="menu-item menu-item-type-custom menu-item-object-custom"
+                                  //   className="menu-item menu-item-type-custom menu-item-object-custom"
+                                  className={getClassName("services")}
                                 >
-                                  <a href="#">
+                                  <a href="/services">
                                     <span>Services</span>
                                   </a>
                                 </li>

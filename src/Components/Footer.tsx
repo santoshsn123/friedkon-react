@@ -3,7 +3,6 @@ import React from "react";
 import EditButton from "./EditButton";
 
 const Footer = ({
-  admin,
   websiteData: {
     reachOut = {},
     socialMedia = {},
@@ -11,6 +10,7 @@ const Footer = ({
     footerBackground = {},
   },
 }: any) => {
+  const admin = localStorage.getItem("loggedInUser") || "";
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   return (
     <footer id="colophon" className="site-footer">
@@ -382,7 +382,7 @@ const Footer = ({
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
-                                                <a href="#">
+                                                <a href="/about-us">
                                                   <span className="elementor-icon-list-text">
                                                     About Us
                                                   </span>
@@ -396,7 +396,7 @@ const Footer = ({
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
-                                                <a href="#">
+                                                <a href="/services">
                                                   <span className="elementor-icon-list-text">
                                                     Services
                                                   </span>

@@ -1,9 +1,10 @@
-import React from "react";
+
 import EditButton from "./EditButton";
 
-const SideMenu = ({showSideMenu,setSidemenustate, admin,  websiteData: {
+const SideMenu = ({showSideMenu,setSidemenustate,   websiteData: {
   reachOut = {},
 }}:any) => {
+  const admin = localStorage.getItem("loggedInUser") || "";
   return (
     <>
       <div className={`sidemenu sidemenu-custom slide-from-left custom-width ${showSideMenu}`}>
@@ -61,7 +62,7 @@ const SideMenu = ({showSideMenu,setSidemenustate, admin,  websiteData: {
                                         id="menu-item-1081"
                                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"
                                       >
-                                        <a href="#">
+                                        <a href="/about-us">
                                           <span>About Us</span>
                                         </a>
                                       </li>
@@ -69,7 +70,7 @@ const SideMenu = ({showSideMenu,setSidemenustate, admin,  websiteData: {
                                         id="menu-item-1064"
                                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1064"
                                       >
-                                        <a href="#">
+                                        <a href="/services">
                                           <span>Services</span>
                                         </a>
                                       </li>

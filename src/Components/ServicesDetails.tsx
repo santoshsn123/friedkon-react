@@ -1,6 +1,6 @@
 import parse from "html-react-parser";
 import EditButton from "./EditButton";
-const ServicesDetails = ({services,configId}:any) => {
+const ServicesDetails = ({services=[],configId}:any) => {
     const fileUrl = process.env.REACT_APP_FILE_BASEURL;
     const admin = localStorage.getItem("loggedInUser") || "";
   return (

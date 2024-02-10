@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.8eccbc3d.css",
-    "main.js": "/static/js/main.68180f63.js",
+    "main.js": "/static/js/main.988e465d.js",
     "static/js/787.00d36722.chunk.js": "/static/js/787.00d36722.chunk.js",
     "static/media/flaticon_hotel.svg?": "/static/media/flaticon_hotel.9e5cb3ba99142a4f223e.svg",
     "static/media/fa-solid-900.svg": "/static/media/fa-solid-900.22d6b1fc3e60b2ac2b8d.svg",
@@ -53,11 +53,11 @@
     "static/media/laser.svg": "/static/media/laser.31d6cfe0d16ae931b73c.svg",
     "static/media/loftocean-white.svg": "/static/media/loftocean-white.31d6cfe0d16ae931b73c.svg",
     "main.8eccbc3d.css.map": "/static/css/main.8eccbc3d.css.map",
-    "main.68180f63.js.map": "/static/js/main.68180f63.js.map",
+    "main.988e465d.js.map": "/static/js/main.988e465d.js.map",
     "787.00d36722.chunk.js.map": "/static/js/787.00d36722.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8eccbc3d.css",
-    "static/js/main.68180f63.js"
+    "static/js/main.988e465d.js"
   ]
 }

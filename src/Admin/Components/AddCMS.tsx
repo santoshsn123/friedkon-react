@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect } from "react";
 import TextField from "./formFields/TextField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -12,13 +12,11 @@ import CKEditorComponent from "./formFields/CKEditor";
 const AddCMS = ({ appData,paramIdForModal }: any) => {
 
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
-  const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue, 
-    getValues,
     watch,
   } = useForm();
 
@@ -64,7 +62,6 @@ const AddCMS = ({ appData,paramIdForModal }: any) => {
       if (paramId) {
         urlArray.pop();
       }
-      // window.location.href = urlArray.join("/");
       window.open(urlArray.join("/"),'_self')
     }).catch(error=>console.error('Something went wrong at form submitting:', error));
   };

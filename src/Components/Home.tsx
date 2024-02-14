@@ -3,7 +3,6 @@ import StickyHeader from "./StickyHeader";
 import Footer from "./Footer";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
-import axios from "axios";
 import MainPageComponent from "./MainPageComponent";
 import HomeBanner from "./HomeBanner";
 import BelowBanner from "./BelowBanner";
@@ -14,10 +13,10 @@ import PlanComponent from "./PlanComponent";
 import WelcomeTextComponent from "./WelcomeTextComponent";
 import FeaturesComponent from "./FeaturesComponent";
 import Testimonials from "./Testimonials";
+import { callApis } from "./CommonFunctions";
 
 const Home = () => {
   const [showSideMenu, setSidemenustate] = useState("");
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const [websiteData, setWebsiteData] = useState<any>({});
 
   useEffect(() => {
@@ -32,14 +31,11 @@ const Home = () => {
       "testimonial-heading",
       "testimonial",
       "welcometext",
-      "reachout",
       "aboutus-bg-image",
-      "social-media",
-      "footer-about-us-text",
-      "footer-background",
+      "reachout",
     ];
 
-    Promise.all(apiEndpoints.map(getAPIData))
+    callApis(apiEndpoints)
       .then(
         ([
           {
@@ -64,21 +60,14 @@ const Home = () => {
           {
             data: [welcometext],
           },
-          {
-            data: [reachOut],
-          },
+          
           {
             data: [aboutUsBGImage],
           },
           {
-            data: [socialMedia],
+            data: [reachOut],
           },
-          {
-            data: [footerAboutUsText],
-          },
-          {
-            data: [footerBackground],
-          },
+         
         ]: any) => {
           setWebsiteData({
             banner,
@@ -91,18 +80,13 @@ const Home = () => {
             testimonialHeading,
             testimonial,
             welcometext,
-            reachOut,
             aboutUsBGImage,
-            socialMedia,
-            footerAboutUsText,
-            footerBackground,
+            reachOut
           });
         }
       )
       .catch((error) => console.log(error));
   }, []);
-
-  const getAPIData = async (url: string) => await axios.get(`${apiUrl}/${url}`);
 
   return (
     <>
@@ -132,7 +116,7 @@ const Home = () => {
           />
         </MainPageComponent>
 
-        <Footer websiteData={websiteData}></Footer>
+        <Footer />
       </div>
       <SideMenu
         setSidemenustate={() => setSidemenustate("")}

@@ -1,15 +1,53 @@
 import parse from "html-react-parser";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EditButton from "./EditButton";
+import axios from "axios";
 
-const Footer = ({
-  websiteData: {
-    reachOut = {},
-    socialMedia = {},
-    footerAboutUsText = {},
-    footerBackground = {},
-  },
-}: any) => {
+const Footer = ({}: any) => {
+  const [footerData, setFooterData] = useState<any>({
+    reachOut: {},
+    socialMedia: {},
+    footerAboutUsText: {},
+    footerBackground: {},
+  });
+useEffect(()=>{
+  const footerApis = [
+    "reachout",
+    "social-media",
+    "footer-about-us-text",
+    "footer-background",
+  ];
+  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
+  const getAPIData = async (url: string) => await axios.get(`${apiUrl}/${url}`);
+
+  Promise.all(footerApis.map(getAPIData)).then(
+    ([
+      {
+        data: [reachOut],
+      },
+      {
+        data: [socialMedia],
+      },
+      {
+        data: [footerAboutUsText],
+      },
+      {
+        data: [footerBackground],
+      },
+    ]: any) => {
+      console.log('checking fetch data here:0 ',footerBackground)
+      setFooterData({
+        reachOut,
+        socialMedia,
+        footerAboutUsText,
+        footerBackground,
+      });
+    }
+  );
+},[])
+ 
+
   const admin = localStorage.getItem("loggedInUser") || "";
   const fileUrl = process.env.REACT_APP_FILE_BASEURL;
   return (
@@ -36,9 +74,13 @@ const Footer = ({
                   data-element_type="section"
                   data-settings='{"background_background":"classNameic"}'
                   data-cs-parallax-y="80"
-                  data-cs-background-image={fileUrl + footerBackground.image}
+                  data-cs-background-image={
+                    fileUrl + footerData?.footerBackground?.image
+                  }
                   style={{
-                    backgroundImage: `url(${fileUrl + footerBackground.image})`,
+                    backgroundImage: `url(${
+                      fileUrl + footerData?.footerBackground?.image
+                    })`,
                   }}
                 >
                   {/* <div className="parallax-img-container">
@@ -47,7 +89,7 @@ const Footer = ({
                   <div className="elementor-background-overlay">
                     <EditButton
                       admin={admin}
-                      paramId={footerBackground._id}
+                      paramId={footerData?.footerBackground?._id}
                       configId={16}
                     />
                   </div>
@@ -168,14 +210,15 @@ const Footer = ({
                                                 <EditButton
                                                   admin={admin}
                                                   paramId={
-                                                    footerAboutUsText._id
+                                                    footerData.footerAboutUsText
+                                                      ._id
                                                   }
                                                   configId={15}
                                                 />
                                                 <p>
                                                   {parse(
-                                                    footerAboutUsText.footeraboutustext ||
-                                                      ""
+                                                    footerData.footerAboutUsText
+                                                      .footeraboutustext || ""
                                                   )}
                                                   {/* Founded in 1998, CozyStay
                                                   Lodge is a luxury boutique
@@ -203,7 +246,9 @@ const Footer = ({
                                             >
                                               <EditButton
                                                 admin={admin}
-                                                paramId={socialMedia._id}
+                                                paramId={
+                                                  footerData.socialMedia._id
+                                                }
                                                 configId={14}
                                               />
                                               {/* {JSON.stringify(socialMedia)} */}
@@ -211,11 +256,13 @@ const Footer = ({
                                                 id="23be821f-social-menu"
                                                 className="social-nav menu"
                                               >
-                                                {socialMedia.facebook && (
+                                                {footerData.socialMedia
+                                                  .facebook && (
                                                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-43">
                                                     <a
                                                       href={
-                                                        socialMedia.facebook
+                                                        footerData.socialMedia
+                                                          .facebook
                                                       }
                                                       target="_blank"
                                                     >
@@ -225,7 +272,10 @@ const Footer = ({
                                                 )}
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-44">
                                                   <a
-                                                    href={socialMedia.twitter}
+                                                    href={
+                                                      footerData.socialMedia
+                                                        .twitter
+                                                    }
                                                     target="_blank"
                                                   >
                                                     Twitter
@@ -233,7 +283,10 @@ const Footer = ({
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-45">
                                                   <a
-                                                    href={socialMedia.pintrest}
+                                                    href={
+                                                      footerData.socialMedia
+                                                        .pintrest
+                                                    }
                                                     target="_blank"
                                                   >
                                                     Pinterest
@@ -241,7 +294,10 @@ const Footer = ({
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-46">
                                                   <a
-                                                    href={socialMedia.youtube}
+                                                    href={
+                                                      footerData.socialMedia
+                                                        .youtube
+                                                    }
                                                     target="_blank"
                                                   >
                                                     YouTube
@@ -249,7 +305,10 @@ const Footer = ({
                                                 </li>
                                                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-47">
                                                   <a
-                                                    href={socialMedia.instagram}
+                                                    href={
+                                                      footerData.socialMedia
+                                                        .instagram
+                                                    }
                                                     target="_blank"
                                                   >
                                                     Instagram
@@ -282,7 +341,9 @@ const Footer = ({
                                               </h6>
                                               <EditButton
                                                 admin={admin}
-                                                paramId={reachOut._id}
+                                                paramId={
+                                                  footerData.reachOut._id
+                                                }
                                                 configId={12}
                                               />
                                             </div>
@@ -299,23 +360,29 @@ const Footer = ({
                                               <li className="elementor-icon-list-item">
                                                 <a href="mailto:joel@friedkon.com">
                                                   <span className="elementor-icon-list-text">
-                                                    Email: {reachOut.email}
+                                                    Email:{" "}
+                                                    {footerData.reachOut.email}
                                                     {/* joel@friedkon.com */}
                                                   </span>
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
-                                                <a href="tel:{reachOut.telephone}">
+                                                <a
+                                                  href={`tel:${footerData.reachOut.telephone}`}
+                                                >
                                                   <span className="elementor-icon-list-text">
                                                     Telephone:
-                                                    {reachOut.telephone}
+                                                    {
+                                                      footerData.reachOut
+                                                        .telephone
+                                                    }
                                                     {/* +41 22 345 66 89 */}
                                                   </span>
                                                 </a>
                                               </li>
                                               <li className="elementor-icon-list-item">
                                                 <span className="elementor-icon-list-text">
-                                                  {reachOut.address}
+                                                  {footerData.reachOut.address}
                                                   {/* Address: 130 LEE AVE SUITE 638
                                                   BROOKLYN, NY 11211 */}
                                                 </span>
@@ -331,7 +398,9 @@ const Footer = ({
                                         >
                                           <div className="elementor-widget-container">
                                             <a
-                                              href={reachOut.locationlink}
+                                              href={
+                                                footerData.reachOut.locationlink
+                                              }
                                               target="_blank"
                                               className="elementor-button-link button cs-btn-underline cs-btn-small"
                                               role="button"

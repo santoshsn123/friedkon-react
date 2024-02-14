@@ -8,26 +8,24 @@ import HomeBanner from "./HomeBanner";
 import QualityText from "./QualityText";
 import OurTeam from "./OurTeam";
 import WelcomeTextComponent from "./WelcomeTextComponent";
+import { callApis } from "./CommonFunctions";
 
 const AboutUs = () => {
   const [showSideMenu, setSidemenustate] = useState("");
   const [websiteData, setWebsiteData] = useState<any>({});
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
+
     const apiEndpoints = [
       "about-us-banner",
       "about-us-text",
       "welcometext",
       "reachout",
       "aboutus-bg-image",
-      "social-media",
-      "footer-about-us-text",
-      "footer-background",
       "team",
     ];
 
-    Promise.all(apiEndpoints.map(getAPIData))
+    callApis(apiEndpoints)
       .then(
         ([
           {
@@ -45,15 +43,6 @@ const AboutUs = () => {
           {
             data: [aboutUsBGImage],
           },
-          {
-            data: [socialMedia],
-          },
-          {
-            data: [footerAboutUsText],
-          },
-          {
-            data: [footerBackground],
-          },
           { data: teams },
         ]: any) => {
           setWebsiteData({
@@ -62,16 +51,13 @@ const AboutUs = () => {
             welcometext,
             reachOut,
             aboutUsBGImage,
-            socialMedia,
-            footerAboutUsText,
-            footerBackground,
             teams,
           });
         }
       )
       .catch((error) => console.log(error));
   }, []);
-  const getAPIData = async (url: string) => await axios.get(`${apiUrl}/${url}`);
+
   return (
     <div id="page">
       <Header setSidemenustate={() => setSidemenustate("show")}></Header>
@@ -85,7 +71,7 @@ const AboutUs = () => {
         <WelcomeTextComponent welcometext={websiteData.welcometext} />
         <OurTeam teams={websiteData.teams} configId={19} />
       </MainPageComponent>
-      <Footer websiteData={websiteData}></Footer>
+      <Footer />
       <SideMenu
         setSidemenustate={() => setSidemenustate("")}
         showSideMenu={showSideMenu}

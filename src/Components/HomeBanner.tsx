@@ -56,7 +56,6 @@ const HomeBanner = ({banner={},configId}:any) => {
             className="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-79386528 dark-color elementor-hidden-tablet elementor-hidden-mobile"
             data-id="79386528"
             data-element_type="column"
-            style={{ display: "none" }}
             data-settings="{'background_background':'classNameic'}"
           >
             <div className="elementor-column-wrap elementor-element-populated">

@@ -44,7 +44,7 @@ const BelowBanner = ({belowBannerText={}, configId}:any) => {
                         configId={configId}
                       />
 
-                      <div className="cs-title-btn">
+                      {/* <div className="cs-title-btn">
                         <a
                           className="button elementor-button-link cs-btn-color-secondary"
                           role="button"
@@ -52,7 +52,7 @@ const BelowBanner = ({belowBannerText={}, configId}:any) => {
                         >
                           <span className="cs-btn-text">Explore Process</span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

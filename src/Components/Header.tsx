@@ -19,6 +19,10 @@ const Header = ({ setSidemenustate }: any) => {
         return currentPage === page
           ? `${baseClasses} current-menu-item`
           : baseClasses;
+      case "contact-us":
+        return currentPage === page
+          ? `${baseClasses} current-menu-item`
+          : baseClasses;
       default:
         return "";
     }
@@ -111,9 +115,9 @@ const Header = ({ setSidemenustate }: any) => {
                                 </li>
                                 <li
                                   id="menu-item-31"
-                                  className="menu-item menu-item-type-post_type menu-item-object-page"
+                                  className={getClassName("contact-us")}
                                 >
-                                  <a href="blog/">
+                                  <a href="/contact-us">
                                     <span>Contact</span>
                                   </a>
                                 </li>
@@ -419,7 +423,10 @@ const Header = ({ setSidemenustate }: any) => {
                           data-widget_type="cs_menu_toggle.default"
                         >
                           <div className="elementor-widget-container">
-                            <button className="menu-toggle elementor-widget-menu-toggle">
+                            <button
+                              className="menu-toggle elementor-widget-menu-toggle"
+                              onClick={() => setSidemenustate("show")}
+                            >
                               <span className="screen-reader-text">Menu</span>
                               <span className="menu-toggle-icon"></span>
                             </button>

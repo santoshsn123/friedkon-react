@@ -89,12 +89,13 @@ export const CMS = ({ appData }: any) => {
                   }
                 })}
                 <td>
-                  <a style={{cursor:'pointer'}} onClick={()=>navigate(`edit/${row._id}`)}> 
+                 {appData.isEditable && <a style={{cursor:'pointer'}} onClick={()=>navigate(`edit/${row._id}`)}> 
                     <img src="/images/edit.png" width="15px"  alt="Edit"/> 
-                  </a>
+                  </a>}
+                  {tableData.length > 1 && appData.multiRecords && appData.isEditable &&  <>&nbsp;|&nbsp;</> }
                   {tableData.length > 1 && appData.multiRecords && (
                     <>
-                    &nbsp;|  <a style={{cursor:'pointer'}} onClick={() => deleteItem(row._id)}><img alt="Delete" width="15px" src="/images/delete.png" /></a>
+                    <a style={{cursor:'pointer'}} onClick={() => deleteItem(row._id)}><img alt="Delete" width="15px" src="/images/delete.png" /></a>
                     </>
                   )}
                 </td>

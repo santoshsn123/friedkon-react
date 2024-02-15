@@ -19,7 +19,7 @@ export default [
                 input: "text",
                 isActive: true,
                 dataType: "String",
-                required: true,
+                required: 'Please enter first name',
               },
               {
                 id: 2,
@@ -31,7 +31,7 @@ export default [
                 input: "text",
                 isActive: true,
                 dataType: "String",
-                required: true,
+                required: 'Please enter last name',
               },
               {
                 id: 3,
@@ -43,7 +43,8 @@ export default [
                 input: "text",
                 isActive: true,
                 dataType: "String",
-                required: true,
+                required: 'Email Address is required',
+                pattern:{value:/^[^\s@]+@[^\s@]+\.[^\s@]+$/, message:"Please Enter valid Email address"}
               },
               {
                 id: 4,
@@ -55,7 +56,8 @@ export default [
                 input: "text",
                 isActive: true,
                 dataType: "String",
-                required: true,
+                required: 'Phone Number is required',
+                pattern:/^\+?[0-9\s-]+$/
               },
               {
                 id: 5,
@@ -67,7 +69,7 @@ export default [
                 input: "textarea",
                 isActive: true,
                 dataType: "String",
-                required: true,
+                required: 'Please add some message here',
               },
         ]
     }

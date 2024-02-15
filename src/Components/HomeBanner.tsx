@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import EditButton from "./EditButton";
 
-const HomeBanner = ({banner={},configId}:any) => {
+const HomeBanner = ({banner={},configId,showForm=false}:any) => {
     const fileUrl = process.env.REACT_APP_FILE_BASEURL;
     const admin = localStorage.getItem("loggedInUser") || "";
   return (
@@ -18,11 +18,11 @@ const HomeBanner = ({banner={},configId}:any) => {
       <div className="elementor-container elementor-column-gap-no">
         <div className="elementor-row">
           <div
-            className="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-105f5244 dark-color"
+            className="elementor-column elementor-col-70 elementor-top-column elementor-element elementor-element-105f5244 dark-color"
             data-id="105f5244"
             data-element_type="column"
           >
-            <div className="elementor-column-wrap elementor-element-populated">
+            <div style={{height:'371px'}} className="elementor-column-wrap elementor-element-populated">
               <div className="elementor-widget-wrap">
                 <div
                   className="elementor-element elementor-element-4753721a elementor-widget elementor-widget-cs_title"
@@ -52,8 +52,8 @@ const HomeBanner = ({banner={},configId}:any) => {
               </div>
             </div>
           </div>
-          <div
-            className="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-79386528 dark-color elementor-hidden-tablet elementor-hidden-mobile"
+          {showForm &&   <div
+            className="elementor-column elementor-col-30 elementor-top-column elementor-element elementor-element-79386528 dark-color elementor-hidden-tablet elementor-hidden-mobile"
             data-id="79386528"
             data-element_type="column"
             data-settings="{'background_background':'classNameic'}"
@@ -174,7 +174,8 @@ const HomeBanner = ({banner={},configId}:any) => {
                 </section>
               </div>
             </div>
-          </div>
+          </div>}
+        
         </div>
       </div>
     </section>

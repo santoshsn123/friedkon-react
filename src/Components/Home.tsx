@@ -96,7 +96,7 @@ const Home = () => {
         <StickyHeader />
 
         <MainPageComponent >
-          <HomeBanner configId={3} banner={websiteData?.banner || {}} />
+          <HomeBanner showForm={true} configId={3} banner={websiteData?.banner || {}} />
           <BelowBanner belowBannerText={websiteData.belowBannerText} configId={4} />
           <PastWork pastWork={websiteData.pastWork} />
           <BackgroundImageWithCircularBTN

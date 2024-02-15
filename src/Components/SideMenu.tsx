@@ -78,7 +78,7 @@ const SideMenu = ({showSideMenu,setSidemenustate,   websiteData: {
                                         id="menu-item-1070"
                                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1070"
                                       >
-                                        <a href="#">
+                                        <a href="/contact-us">
                                           <span>Contact Us</span>
                                         </a>
                                       </li>
@@ -86,9 +86,9 @@ const SideMenu = ({showSideMenu,setSidemenustate,   websiteData: {
                                         id="menu-item-1065"
                                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1065"
                                       >
-                                        <a href="#">
+                                        {/* <a href="#">
                                           <span>Blog</span>
-                                        </a>
+                                        </a> */}
                                       </li>
                                     </ul>
                                   </nav>

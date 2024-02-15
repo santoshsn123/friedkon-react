@@ -1,3 +1,7 @@
+import { useState } from "react";
+import BookAppointment from "./BookAppointment";
+import ModalBt from "./ModalBt";
+
 const Header = ({ setSidemenustate }: any) => {
   const getClassName = (page: any) => {
     const baseClasses =
@@ -28,12 +32,19 @@ const Header = ({ setSidemenustate }: any) => {
     }
   };
 
+  const openAppointmentModal=()=>{
+    setshowModal(true)
+  }
+const [showModal,setshowModal] = useState(false);
   return (
     <header
       id="masthead"
       className="site-header overlap-header"
       data-sticky-status="scroll-up-enable"
     >
+      <ModalBt show={showModal} modalClose={()=>setshowModal(false)} showFooter={false} >
+        <BookAppointment />
+      </ModalBt>
       {/* <link rel="stylesheet" id="elementor-post-182-css" href="./assets/css/post-182.css" type="text/css"
 				media="all" /> */}
       <div
@@ -383,14 +394,14 @@ const Header = ({ setSidemenustate }: any) => {
                               </div>
                             </div>
                             <a
-                              href="#"
                               className="elementor-button-link button cs-btn-outline cs-btn-small cs-btn-color-white popup-box-enabled"
                               role="button"
                               data-popup-hash="4cc74e8d702eb862c030739d1dc1317d"
+                              onClick={openAppointmentModal}
                             >
                               <span className="cs-btn-text">
                                 Book Appointment
-                              </span>{" "}
+                              </span>
                             </a>
                           </div>
                         </div>

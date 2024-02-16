@@ -47,7 +47,8 @@ const ContactUs = () => {
           <div className="col-md-4" style={{ margin: "50px 0" }}>
             <Forms
               formArray={appData[24]}
-              buttonName="Submit"
+              buttonName="Submit" 
+              successMessage={'form submitted, we will get back to you'}
             />
           </div>
           <div className="col-md-8" style={{ margin: "50px 0" }}>

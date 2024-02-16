@@ -2,6 +2,7 @@ import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import "react-datepicker/dist/react-datepicker.css";
 import Home from "./Components/Home";
 import AdminHome from "./Admin/AdminHome";
 import Login from "./Admin/Components/Login";

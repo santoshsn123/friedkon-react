@@ -14,4 +14,10 @@ const callApis = (apiEndpoints:Array<string>) => {
    })
 }
 
-export  {callApis, getAPIData}
+const changeDateFormat=(date:Date)=>{
+  return `${date.getDate()}-${addZeroIfRequired(date.getMonth()+1)}-${date.getFullYear()}`
+}
+const addZeroIfRequired = (value:number)=> JSON.stringify(value).length<2?`0${JSON.stringify(value)}`:JSON.stringify(value);
+
+
+export  {callApis, getAPIData, changeDateFormat}

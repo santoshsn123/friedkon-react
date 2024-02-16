@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
+import DatePicker from "react-datepicker";
+import Forms from "./Forms";
+import appData from "../Admin/JSON/appData";
 const BookAppointment = () => {
+  const [startDate, setStartDate] = useState<any>(new Date());
   return (
     <section
       className="elementor-section elementor-inner-section elementor-element elementor-element-3721f659 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -42,34 +46,25 @@ const BookAppointment = () => {
                 >
                   <div className="elementor-widget-container">
                     <div className="cs-reservation-form style-block cs-form-square inline-label">
-                      <form
+                      <Forms formArray={appData[1]}
+                       buttonName="Book Appointment" 
+                       successMessage={'Your Appointment is Booked, we will get back to you on provided contact number'}
+                      />
+                      {/* <form
                         className="cs-form-wrap"
                         data-date-format="YYYY-MM-DD"
                         action=""
                         method="GET"
                       >
-                        <div className="cs-form-field cs-check-in">
-                          <div className="field-wrap">
-                            <label className="cs-form-label">
-                              Appointment Date
-                            </label>
-                            <div className="field-input-wrap checkin-date">
-                              <input
-                                type="text"
-                                className="date-range-picker"
-                                value="2023-12-04 - 2023-12-05"
-                              />
-                              <input
-                                type="text"
-                                value="2023-12-04"
-                                className="check-in-date"
-                                name="checkin"
-                              />
-                             
+
+                        <div className="cs-form-field cs-rooms ">
+                          <div>
+                            <label className="cs-form-label">Appointment Date</label>
+                            <div className="">
+                            <DatePicker  selected={startDate} onChange={(date) => setStartDate(date)} />
                             </div>
                           </div>
                         </div>
-
                         <div className="cs-form-field cs-rooms ">
                           <div>
                             <label className="cs-form-label">Subject</label>
@@ -81,16 +76,16 @@ const BookAppointment = () => {
                         <div className="cs-form-field cs-submit">
                           <div className="field-wrap">
                             <button
-                              className="button"
+                              className="button appointment-btn"
                               role="button"
                               type="submit"
                             >
-                              <span className="btn-text">Book Appointment</span>
+                              <span className="btn-text" >Book Appointment</span>
                             </button>
                           </div>
                         </div>
                         <input type="hidden" name="search_rooms" readOnly />
-                      </form>
+                      </form> */}
                     </div>
                   </div>
                 </div>

@@ -41,3 +41,9 @@
 .error{
   color: #ff0000;
 }
+.react-datepicker-wrapper{
+  width:100%
+}
+.appointment-btn{
+  z-index: 0!important;
+}

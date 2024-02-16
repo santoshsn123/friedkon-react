@@ -1,4 +1,3 @@
-
 import { useForm } from "react-hook-form";
 import TextField from "../Admin/Components/formFields/TextField";
 import FileUpload from "../Admin/Components/formFields/FileUpload";
@@ -7,9 +6,11 @@ import DropDown from "../Admin/Components/formFields/DropDown";
 import Radio from "../Admin/Components/formFields/Radio";
 import CKEditorComponent from "../Admin/Components/formFields/CKEditor";
 import axios from "axios";
+import DateSelector from "../Admin/Components/formFields/DateSelector";
+import { changeDateFormat } from "./CommonFunctions";
 
-const Forms = ({ formArray, buttonName ="Submit"}: any) => {
-    const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const Forms = ({ formArray, buttonName = "Submit", successMessage = 'Form Data Submitted Successfully!'}: any) => {
+  const apiUrl = process.env.REACT_APP_API_BASE_URL;
   const {
     register,
     handleSubmit,
@@ -19,19 +20,26 @@ const Forms = ({ formArray, buttonName ="Submit"}: any) => {
     reset,
   } = useForm();
 
+
   const onSubmit = (data: any) => {
-    // axios.post(`${formArray.apiURL}`).then(data=>{
-    //     console.log(data);
-    // })
+    const dateField = formArray.data.filter(({input}:any)=>input=='date');
+    if(dateField.length){
+      Object.keys(data).forEach(item=>{
+        if((dateField.find(({name}:any)=>name==item))){
+          data[item] = changeDateFormat(data[item]);
+          console.log('Date changed :- ', data[item]);
+        }
+      })
+    }
     const headers = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-    axios.post(apiUrl + formArray?.apiURL, data, headers).then(data=>{
-        alert('form submitted, we will get back to you');
-reset();
-    })
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    axios.post(apiUrl + formArray?.apiURL, data, headers).then((data) => {
+      alert(successMessage);
+      reset();
+    });
   };
   return (
     <div>
@@ -95,11 +103,22 @@ reset();
                   setValue={setValue}
                 />
               );
+            case "date":
+              return (
+                <DateSelector
+                  key={formData.id}
+                  errors={errors}
+                  register={register}
+                  formData={formData}
+                  watch={watch}
+                  setValue={setValue}
+                />
+              );
           }
         })}
 
         <button type="submit" className="btn btn-primary mt-4 mb-6">
-         {buttonName}
+          {buttonName}
         </button>
       </form>
     </div>

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e34ed993.css",
-    "main.js": "/static/js/main.5d49db75.js",
+    "main.css": "/static/css/main.29dfb41a.css",
+    "main.js": "/static/js/main.2d0fb4ef.js",
     "static/js/787.00d36722.chunk.js": "/static/js/787.00d36722.chunk.js",
     "static/media/flaticon_hotel.svg?": "/static/media/flaticon_hotel.9e5cb3ba99142a4f223e.svg",
     "static/media/fa-solid-900.svg": "/static/media/fa-solid-900.22d6b1fc3e60b2ac2b8d.svg",
@@ -52,12 +52,12 @@
     "static/media/star.svg": "/static/media/star.1fe9ce9130aa727fff79.svg",
     "static/media/laser.svg": "/static/media/laser.31d6cfe0d16ae931b73c.svg",
     "static/media/loftocean-white.svg": "/static/media/loftocean-white.31d6cfe0d16ae931b73c.svg",
-    "main.e34ed993.css.map": "/static/css/main.e34ed993.css.map",
-    "main.5d49db75.js.map": "/static/js/main.5d49db75.js.map",
+    "main.29dfb41a.css.map": "/static/css/main.29dfb41a.css.map",
+    "main.2d0fb4ef.js.map": "/static/js/main.2d0fb4ef.js.map",
     "787.00d36722.chunk.js.map": "/static/js/787.00d36722.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e34ed993.css",
-    "static/js/main.5d49db75.js"
+    "static/css/main.29dfb41a.css",
+    "static/js/main.2d0fb4ef.js"
   ]
 }

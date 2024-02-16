@@ -62,7 +62,7 @@ const AboutUs = () => {
     <div id="page">
       <Header setSidemenustate={() => setSidemenustate("show")}></Header>
       <MainPageComponent>
-        <HomeBanner configId={17} banner={websiteData?.banner || {}} />
+        <HomeBanner showForm={false} configId={17} banner={websiteData?.banner || {}} />
         <QualityText
           reverse={true}
           configId={18}

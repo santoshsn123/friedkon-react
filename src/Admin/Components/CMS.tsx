@@ -59,14 +59,15 @@ export const CMS = ({ appData }: any) => {
     <>
       <h2>{appData.title}</h2>
       <div style={{cursor:'pointer'}}>
-        {appData.multiRecords && (
+        {appData.multiRecords && appData.isEditable && (
           <a onClick={()=>navigate(`add`)}>Add New</a>
         )}
-        {appData.multiRecords === false && tableData.length < 1 && (
+        {appData.multiRecords === false && tableData.length < 1 && appData.isEditable && (
           <a onClick={()=>navigate(`add`)}>Add New</a>
         )}
       </div>
-      <table className="table">
+          {tableData.length==0 && <div className="alert alert-danger"> No Records available !!</div>}
+      {tableData.length>0 && <table className="table">
         <thead>
           <tr>
             {column.map((col: any) => {
@@ -93,7 +94,7 @@ export const CMS = ({ appData }: any) => {
                     <img src="/images/edit.png" width="15px"  alt="Edit"/> 
                   </a>}
                   {tableData.length > 1 && appData.multiRecords && appData.isEditable &&  <>&nbsp;|&nbsp;</> }
-                  {tableData.length > 1 && appData.multiRecords && (
+                  {((tableData.length > 1 && appData.multiRecords) || !appData.isEditable) && (
                     <>
                     <a style={{cursor:'pointer'}} onClick={() => deleteItem(row._id)}><img alt="Delete" width="15px" src="/images/delete.png" /></a>
                     </>
@@ -103,7 +104,7 @@ export const CMS = ({ appData }: any) => {
             );
           })}
         </tbody>
-      </table>
+      </table>}
 
       <ModalBt
         show={imageModalShow}

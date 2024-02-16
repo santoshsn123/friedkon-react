@@ -283,7 +283,7 @@ const [showModal,setshowModal] = useState(false);
 																														to
 																														Search</span>  */}
                                                         </div>
-                                                        <h4 className="cs-title">
+                                                        <h4 className="cs-title" onClick={openAppointmentModal}>
                                                           Book an Appointment
                                                         </h4>
                                                       </div>
@@ -490,7 +490,7 @@ const [showModal,setshowModal] = useState(false);
                         >
                           <div className="elementor-widget-container">
                             <div className="elementor-text-editor elementor-clearfix">
-                              <a href="#">EN</a>/ <a href="#">FR</a>
+                              <a style={{cursor:'pointer'}} onClick={openAppointmentModal}>Book Appointment</a>
                             </div>
                           </div>
                         </div>

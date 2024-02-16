@@ -2,9 +2,11 @@ import parse from "html-react-parser";
 import EditButton from "./EditButton";
 import BookAppointment from "./BookAppointment";
 
+
 const HomeBanner = ({banner={},configId,showForm=false}:any) => {
     const fileUrl = process.env.REACT_APP_FILE_BASEURL;
     const admin = localStorage.getItem("loggedInUser") || "";
+
   return (
     <section
       className="elementor-section elementor-top-section elementor-element elementor-element-60d07609 elementor-section-height-min-height cs-section-content-fullwidth cs_scroll_y_120 cs-parallax-on-scroll elementor-section-boxed elementor-section-height-default elementor-section-items-middle"

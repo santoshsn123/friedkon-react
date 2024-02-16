@@ -85,28 +85,38 @@
     },
     {
       id: 2,
-      title: "Book Management",
-      router: "/book-management",
-      dbTableName: "book",
-      isEditable: true,
-      apiURL: "book",
+      title: "Book An Appointment",
+      router: "/book-appointment",
+      dbTableName: "BookAppointment",
+      isEditable: false,
+      apiURL: "book-appointment",
       multiRecords: true,
       data: [
         {
           id: 1,
-          name: "firstName",
-          displayName: "Book Name",
+          name: "appointmentDate",
+          displayName: "Appointment Date",
           order: 1,
+          editable: true,
+          displayOnTable: true,
+          input: "date",
+          dataType: "String",
+        },
+        {
+          id: 2,
+          name: "subject",
+          displayName: "Subject",
+          order: 2,
           editable: true,
           displayOnTable: true,
           input: "text",
           dataType: "String",
         },
         {
-          id: 2,
-          name: "lastName",
-          displayName: "Book Price",
-          order: 2,
+          id: 3,
+          name: "phone",
+          displayName: "Your Contact Number",
+          order: 3,
           editable: true,
           displayOnTable: true,
           input: "text",
@@ -1254,6 +1264,7 @@
               required: 'Please add some message here',
             },
       ]
-  }
+  },
+  
   ];
   
